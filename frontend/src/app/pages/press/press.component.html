@@ -1,0 +1,22 @@
+<section class="pt-32 pb-24 px-6 max-w-7xl mx-auto">
+  <div class="mb-16">
+    <h1 class="text-5xl font-serif mb-6 text-[#4b1248]">Press</h1>
+    <p class="text-gray-500 max-w-2xl">ShaadiMe has been featured in top publications for our innovative wedding planning and design.</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+    <div *ngFor="let article of [
+      {title: 'The Future of Weddings', source: 'Vogue India', date: 'Jan 2024', img: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=800'},
+      {title: 'Destination Wedding Trends', source: 'Harper\'s Bazaar', date: 'Dec 2023', img: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800'},
+      {title: 'Planning a Royal Wedding', source: 'Elle Decor', date: 'Nov 2023', img: 'https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&q=80&w=800'}
+    ]" class="group cursor-pointer">
+      <div class="relative h-64 rounded-3xl overflow-hidden mb-6">
+        <img [src]="article.img" [alt]="article.title" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700">
+        <div class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-all"></div>
+      </div>
+      <div class="text-sm text-[#ff5757] font-medium mb-2">{{article.source}} | {{article.date}}</div>
+      <h3 class="text-2xl font-serif mb-2">{{article.title}}</h3>
+      <a href="#" class="inline-block mt-4 text-gray-500 font-medium border-b border-gray-300 hover:border-[#ff5757] transition-all">Read Article</a>
+    </div>
+  </div>
+</section>

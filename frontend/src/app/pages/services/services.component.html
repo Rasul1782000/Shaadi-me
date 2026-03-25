@@ -1,0 +1,41 @@
+<section class="pt-32 pb-24 px-6 max-w-7xl mx-auto">
+  <div class="mb-16 text-center">
+    <h1 class="text-5xl font-serif mb-6 text-[#4b1248]">Our Services</h1>
+    <p class="text-gray-500 max-w-2xl mx-auto">From full-service planning to day-of coordination, we offer tailored packages to suit your needs.</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+    <div *ngFor="let service of [
+      {title: 'Full Planning', price: '$5,000+', desc: 'A-Z planning, vendor management, design, and coordination.'},
+      {title: 'Partial Planning', price: '$3,000+', desc: 'Assistance with specific planning phases and vendor sourcing.'},
+      {title: 'Day-of Coordination', price: '$1,500+', desc: 'Ensuring your wedding day runs flawlessly.'},
+      {title: 'Destination Weddings', price: '$7,000+', desc: 'Full logistics and planning for international events.'},
+      {title: 'Elopements', price: '$1,000+', desc: 'Intimate, stress-free planning for just the two of you.'},
+      {title: 'Corporate Events', price: 'Custom', desc: 'Professional planning for galas, conferences, and parties.'}
+    ]" class="bg-white p-10 rounded-3xl shadow-sm border border-[#fad6d6]/30 hover:shadow-md transition-all">
+      <h3 class="text-2xl font-serif mb-2">{{service.title}}</h3>
+      <div class="text-[#ff5757] font-bold mb-4">{{service.price}}</div>
+      <p class="text-gray-500 text-sm mb-8">{{service.desc}}</p>
+      <button class="text-[#ff5757] font-medium flex items-center hover:translate-x-1 transition-transform">
+        Learn More <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Process -->
+  <div class="text-center">
+    <h2 class="text-4xl font-serif mb-16 text-[#4b1248]">Our Process</h2>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div *ngFor="let step of [
+        {num: '01', title: 'Consultation', desc: 'Initial meeting to understand your vision.'},
+        {num: '02', title: 'Vendor Sourcing', desc: 'Finding the perfect partners for your day.'},
+        {num: '03', title: 'Planning', desc: 'Detailed logistics and design phase.'},
+        {num: '04', title: 'Execution', desc: 'On-site management for a perfect wedding.'}
+      ]" class="space-y-4">
+        <div class="text-5xl font-serif text-[#fad6d6]">{{step.num}}</div>
+        <h4 class="text-xl font-serif">{{step.title}}</h4>
+        <p class="text-gray-500 text-sm">{{step.desc}}</p>
+      </div>
+    </div>
+  </div>
+</section>

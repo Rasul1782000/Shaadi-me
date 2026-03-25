@@ -1,0 +1,17 @@
+<section class="pt-32 pb-24 px-6 max-w-7xl mx-auto">
+  <div class="mb-16">
+    <h1 class="text-5xl font-serif mb-6 text-[#4b1248]">Venues</h1>
+    <p class="text-gray-500 max-w-2xl">From historic palaces to modern ballrooms, we help you choose the perfect backdrop for your love story.</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+    <div *ngFor="let venue of ['Palace & Heritage', 'Five Star Hotels', 'Beach Resorts', 'Farmhouse & Open Air', 'Banquet Hall']" class="group cursor-pointer">
+      <div class="relative h-96 rounded-3xl overflow-hidden mb-6">
+        <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&q=80&w=800" alt="Venue" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700">
+        <div class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-all"></div>
+      </div>
+      <h3 class="text-2xl font-serif mb-2">{{venue}}</h3>
+      <p class="text-gray-500 text-sm">Aspiration and inspiration for your dream day.</p>
+    </div>
+  </div>
+</section>

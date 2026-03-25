@@ -1,0 +1,169 @@
+<!-- Hero Section -->
+<section class="relative h-screen flex items-center justify-center overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1920" 
+         alt="Wedding Hero" class="w-full h-full object-cover opacity-20" referrerPolicy="no-referrer">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#fdf6f3] via-transparent to-[#fdf6f3]"></div>
+  </div>
+  
+  <div class="relative z-10 text-center px-6 max-w-4xl">
+    <h1 class="text-6xl md:text-8xl font-serif leading-tight mb-8 text-[#4b1248]">
+      Come to your wedding <br>
+      <span class="italic text-[#ff5757]">as a guest.</span>
+    </h1>
+    <p class="text-xl md:text-2xl text-gray-600 mb-12 max-w-2xl mx-auto">
+      We handle the vendors, the quotes, and the chaos. You handle the celebration.
+    </p>
+    <button (click)="showForm = true" 
+            class="px-12 py-5 bg-[#ff5757] text-white rounded-full text-xl font-medium hover:scale-105 transition-all shadow-xl shadow-[#ff5757]/30 flex items-center mx-auto">
+      Start Planning Your Dream Day
+      <svg class="ml-3 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+    </button>
+  </div>
+</section>
+
+<!-- Wedding Themes -->
+<section class="py-24 px-6 max-w-7xl mx-auto">
+  <div class="mb-16 text-center">
+    <h2 class="text-4xl font-serif mb-4 text-[#4b1248]">Wedding Themes</h2>
+    <p class="text-gray-500">Inspirational aesthetics tailored to your story.</p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div *ngFor="let theme of themes" class="group relative h-[400px] rounded-3xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all">
+      <img [src]="theme.img" [alt]="theme.name" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerPolicy="no-referrer">
+      <div class="absolute inset-0 bg-gradient-to-t from-[#4b1248]/90 via-transparent to-transparent"></div>
+      <div class="absolute bottom-0 p-8">
+        <h3 class="text-2xl font-serif text-white mb-2">{{theme.name}}</h3>
+        <p class="text-white/70 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">{{theme.desc}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Weddings Section -->
+<section class="py-24 bg-[#4b1248] text-white overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="mb-16 text-center">
+      <h2 class="text-5xl font-serif mb-6">Weddings</h2>
+      <p class="text-white/70 max-w-2xl mx-auto">From intimate ceremonies to grand celebrations, we specialize in planning weddings that reflect your unique style and love story.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="space-y-4">
+        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=800" alt="Wedding Planning" class="rounded-3xl h-64 w-full object-cover">
+        <h3 class="text-2xl font-serif">Wedding Planning</h3>
+        <p class="text-white/60">Meticulous detail for your perfect day.</p>
+      </div>
+      <div class="space-y-4">
+        <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80&w=800" alt="The Couple" class="rounded-3xl h-64 w-full object-cover">
+        <h3 class="text-2xl font-serif">The Couple</h3>
+        <p class="text-white/60">Capturing elegance and timeless beauty.</p>
+      </div>
+      <div class="space-y-4">
+        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800" alt="Family & Love" class="rounded-3xl h-64 w-full object-cover">
+        <h3 class="text-2xl font-serif">Family & Love</h3>
+        <p class="text-white/60">Creating bonds that last through generations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Decoration Styles -->
+<section class="py-24 px-6 max-w-7xl mx-auto">
+  <div class="mb-16 text-center">
+    <h2 class="text-4xl font-serif mb-4 text-[#4b1248]">Decoration Styles</h2>
+    <p class="text-gray-500">Visual mood boards for your celebration.</p>
+  </div>
+  <div class="flex overflow-x-auto pb-8 space-x-6 scrollbar-hide">
+    <div *ngFor="let style of decorStyles" class="flex-none w-80 bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all">
+      <img [src]="style.img" [alt]="style.name" class="w-full h-56 object-cover" referrerPolicy="no-referrer">
+      <div class="p-6">
+        <h3 class="text-xl font-serif mb-2">{{style.name}}</h3>
+        <p class="text-gray-500 text-sm">{{style.desc}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Destinations -->
+<section class="py-24 bg-[#fdf6f3]">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-serif mb-4 text-[#4b1248]">Destinations</h2>
+      <p class="text-gray-500">From serene beaches to historic palaces, we help you choose the perfect destination for your wedding.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div *ngFor="let dest of ['Bali', 'Goa', 'Tuscany']" class="relative group h-96 rounded-3xl overflow-hidden cursor-pointer">
+        <img [src]="'https://images.unsplash.com/photo-1544124499-58912cbddaad?auto=format&fit=crop&q=80&w=800'" alt="Destination" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700">
+        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <h3 class="text-3xl font-serif text-white">{{dest}}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Our Services -->
+<section class="py-24 px-6 max-w-7xl mx-auto">
+  <div class="text-center mb-16">
+    <h2 class="text-4xl font-serif mb-4 text-[#4b1248]">Our Services</h2>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="bg-white p-10 rounded-3xl shadow-sm border border-[#fad6d6]/30">
+      <h3 class="text-2xl font-serif mb-4">Wedding Photography</h3>
+      <p class="text-gray-500">Capturing timeless moments with professional precision.</p>
+    </div>
+    <div class="bg-white p-10 rounded-3xl shadow-sm border border-[#fad6d6]/30">
+      <h3 class="text-2xl font-serif mb-4">Venue Selection</h3>
+      <p class="text-gray-500">Finding the perfect backdrop for your love story.</p>
+    </div>
+    <div class="bg-white p-10 rounded-3xl shadow-sm border border-[#fad6d6]/30">
+      <h3 class="text-2xl font-serif mb-4">Wedding Trends</h3>
+      <p class="text-gray-500">Curating the latest styles for a modern celebration.</p>
+    </div>
+    <div class="bg-white p-10 rounded-3xl shadow-sm border border-[#fad6d6]/30">
+      <h3 class="text-2xl font-serif mb-4">Groom & Bride Styling</h3>
+      <p class="text-gray-500">Expert styling to ensure you look your absolute best.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Launch Cities -->
+<section class="py-24 bg-[#4b1248] text-white text-center">
+  <h2 class="text-4xl font-serif mb-12">Launch Cities</h2>
+  <div class="flex flex-wrap justify-center gap-12 text-3xl font-serif italic">
+    <span>Bengaluru</span>
+    <span>Chennai</span>
+    <span>Hyderabad</span>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-24 px-6 max-w-3xl mx-auto">
+  <h2 class="text-4xl font-serif mb-12 text-center text-[#4b1248]">Common Questions</h2>
+  <div class="space-y-4">
+    <div *ngFor="let faq of faqs; let i = index" class="border-b border-gray-100">
+      <button (click)="toggleFaq(i)" class="w-full py-6 flex items-center justify-between text-left group">
+        <span class="text-lg font-medium group-hover:text-[#ff5757] transition-colors">{{faq.q}}</span>
+        <svg [ngClass]="{'rotate-180': openFaq === i}" class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+      </button>
+      <div *ngIf="openFaq === i" class="pb-6 text-gray-500 leading-relaxed">
+        {{faq.a}}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-24 bg-[#ff5757] text-white text-center">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="text-5xl font-serif mb-8">Ready to Plan Your Dream Wedding?</h2>
+    <p class="text-xl mb-12 opacity-90">Let's start your journey to a stress-free and unforgettable wedding day. Our expert planners are ready to bring your vision to life.</p>
+    <button (click)="showForm = true" class="px-12 py-5 bg-white text-[#ff5757] rounded-full text-xl font-medium hover:bg-[#fdf6f3] transition-all shadow-xl">
+      Book a Free Consultation
+    </button>
+  </div>
+</section>
+
+<!-- Intake Form Modal -->
+<app-intake-form *ngIf="showForm" (close)="showForm = false"></app-intake-form>
