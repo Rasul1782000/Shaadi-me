@@ -1,23 +1,27 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Modules\Lead\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LeadRequest extends FormRequest
+class StoreLeadRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
+     *
+     * @return bool
      */
-    public function authorize(): bool
+    public function authorize()
     {
         return true;
     }
 
     /**
      * Get the validation rules that apply to the request.
+     *
+     * @return array
      */
-    public function rules(): array
+    public function rules()
     {
         return [
             'brideName' => 'required|string|max:255',
@@ -34,8 +38,10 @@ class LeadRequest extends FormRequest
 
     /**
      * Get custom messages for validator errors.
+     *
+     * @return array
      */
-    public function messages(): array
+    public function messages()
     {
         return [
             'brideName.required' => 'Bride name is required',

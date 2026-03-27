@@ -2,9 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\LeadController;
-use App\Http\Controllers\Api\ContactController;
-use App\Http\Controllers\VenueController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +14,12 @@ use App\Http\Controllers\VenueController;
 |
 */
 
-Route::post('/leads', [LeadController::class, 'store']);
-Route::post('/contacts', [ContactController::class, 'store']);
-Route::get('/venues', [VenueController::class, 'index']);
+// Module Routes
+require base_path('app/Modules/Contact/Routes/api.php');
+require base_path('app/Modules/Lead/Routes/api.php');
+require base_path('app/Modules/Venue/Routes/api.php');
 
+// Auth Routes
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
