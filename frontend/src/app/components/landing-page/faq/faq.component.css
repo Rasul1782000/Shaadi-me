@@ -1,0 +1,19 @@
+:host {
+  display: block;
+}
+
+.faq-layout {
+  max-width: 64rem;
+}
+
+.faq-cta-card {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.faq-cta-card p {
+  max-width: 36rem;
+  margin: 0 auto 1.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.05rem;
+}

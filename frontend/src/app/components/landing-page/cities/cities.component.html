@@ -1,0 +1,28 @@
+<section id="cities" class="landing-section">
+  <div class="landing-container">
+    <div class="section-heading section-heading-center">
+      <p class="section-eyebrow">Now Live In</p>
+      <h2 class="section-title">Planning weddings in the cities we know best</h2>
+      <p class="section-copy">
+        We are starting in Hyderabad, Bengaluru, and Chennai, with more cities launching soon. We bring the same promise to each: less coordination for you, more confidence on the day.
+      </p>
+    </div>
+
+    <div class="cities-grid">
+      <p-card *ngFor="let city of cities" styleClass="landing-card city-card">
+        <ng-template pTemplate="content">
+          <div class="city-avatar">
+            <img
+              [src]="city.image"
+              [alt]="city.name"
+              [style.object-position]="city.objectPosition"
+              referrerpolicy="no-referrer"
+            />
+          </div>
+          <h3>{{ city.name }}</h3>
+          <p-tag [value]="city.tagline" styleClass="landing-tag landing-tag-outline"></p-tag>
+        </ng-template>
+      </p-card>
+    </div>
+  </div>
+</section>

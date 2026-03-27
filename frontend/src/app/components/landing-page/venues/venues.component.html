@@ -1,0 +1,29 @@
+<section id="venues" class="landing-section landing-section-tint">
+  <div class="landing-container">
+    <div class="section-heading">
+      <p class="section-eyebrow">Types of Venues</p>
+      <h2 class="section-title">The right venue changes the whole mood</h2>
+      <p class="section-copy">
+        From heritage properties to polished hotel ballrooms, the setting shapes the entire experience of the day.
+      </p>
+    </div>
+
+    <div class="venues-grid">
+      <p-card *ngFor="let venue of venues" styleClass="landing-card image-card venue-card">
+        <ng-template pTemplate="content">
+          <img
+            [src]="venue.image"
+            [alt]="venue.name"
+            [style.object-position]="venue.objectPosition"
+            referrerpolicy="no-referrer"
+          />
+          <div class="venue-copy">
+            <p-tag [value]="venue.tag" styleClass="landing-tag landing-tag-soft"></p-tag>
+            <h3>{{ venue.name }}</h3>
+            <p>{{ venue.description }}</p>
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
+  </div>
+</section>

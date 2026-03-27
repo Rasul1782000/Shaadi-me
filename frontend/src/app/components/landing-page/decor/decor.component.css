@@ -1,0 +1,27 @@
+:host {
+  display: block;
+}
+
+.decor-grid {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 3.5rem;
+}
+
+.decor-card h3 {
+  margin: 1.1rem 0 0;
+  color: var(--text-main);
+  font-size: 1.15rem;
+}
+
+@media (min-width: 768px) {
+  .decor-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .decor-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}

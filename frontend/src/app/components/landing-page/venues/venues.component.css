@@ -1,0 +1,36 @@
+:host {
+  display: block;
+}
+
+.venues-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+}
+
+.venue-copy {
+  margin-top: 1.2rem;
+}
+
+.venue-copy h3 {
+  margin: 1rem 0 0;
+  color: var(--text-main);
+  font-size: 1.5rem;
+}
+
+.venue-copy p {
+  margin: 0.85rem 0 0;
+  color: var(--text-muted);
+}
+
+@media (min-width: 768px) {
+  .venues-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .venues-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

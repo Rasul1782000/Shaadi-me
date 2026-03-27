@@ -1,0 +1,31 @@
+<section id="themes" class="landing-section">
+  <div class="landing-container">
+    <div class="section-heading">
+      <p class="section-eyebrow">Wedding Themes</p>
+      <h2 class="section-title">Not every wedding should look the same</h2>
+      <p class="section-copy">
+        A wedding should feel like you, not like a template. These are some of the worlds we can help you build.
+      </p>
+    </div>
+
+    <div class="themes-grid">
+      <p-card *ngFor="let theme of themes" styleClass="landing-card theme-card">
+        <ng-template pTemplate="content">
+          <div class="theme-media">
+            <img
+              [src]="theme.image"
+              [alt]="theme.name"
+              [style.object-position]="theme.objectPosition"
+              referrerpolicy="no-referrer"
+            />
+            <p-tag *ngIf="theme.featured" value="Most loved" styleClass="landing-tag landing-tag-light theme-badge"></p-tag>
+          </div>
+          <div class="theme-copy">
+            <h3>{{ theme.name }}</h3>
+            <p>{{ theme.description }}</p>
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
+  </div>
+</section>

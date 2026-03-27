@@ -1,0 +1,70 @@
+<section id="hero" class="hero-section">
+  <div class="hero-media">
+    <ng-container *ngFor="let slide of slides; let i = index">
+      <video
+        class="hero-video"
+        [class.is-active]="activeIndex === i"
+        [autoplay]="activeIndex === i"
+        loop
+        muted
+        playsinline
+      >
+        <source [src]="slide.video" type="video/mp4" />
+      </video>
+    </ng-container>
+    <div class="hero-overlay"></div>
+  </div>
+
+  <div class="landing-container hero-layout">
+    <div class="hero-copy">
+      <p-tag value="Wedding planning, handled with care" styleClass="landing-tag landing-tag-soft"></p-tag>
+      <h1>
+        Craft a wedding
+        <span>worth arriving for</span>
+      </h1>
+      <p class="hero-text">
+        Tell us how you want the day to feel. We handle the planning, coordination, and follow-through so you can stay present for the moments that matter.
+      </p>
+
+      <div class="hero-actions">
+        <p-button
+          label="Start my wedding planning"
+          styleClass="landing-btn-primary"
+          (onClick)="startPlanning.emit()"
+        ></p-button>
+        <p-button
+          label="Explore themes"
+          styleClass="landing-btn-secondary"
+          (onClick)="exploreThemes.emit()"
+        ></p-button>
+      </div>
+
+      <div class="hero-stats">
+        <p-tag
+          *ngFor="let stat of stats"
+          [value]="stat.value + ' ' + stat.label"
+          styleClass="landing-tag landing-tag-hero"
+        ></p-tag>
+      </div>
+    </div>
+
+    <p-card styleClass="landing-card hero-panel">
+      <ng-template pTemplate="title">Current edit</ng-template>
+      <ng-template pTemplate="content">
+        <p class="hero-panel-title">{{ slides[activeIndex]?.label }}</p>
+        <p class="hero-panel-meta">{{ slides[activeIndex]?.meta }}</p>
+
+        <div class="hero-dots" role="tablist" aria-label="Hero slides">
+          <button
+            *ngFor="let slide of slides; let i = index"
+            type="button"
+            class="hero-dot"
+            [class.is-active]="activeIndex === i"
+            [attr.aria-label]="'Show ' + slide.label"
+            (click)="selectSlide(i)"
+          ></button>
+        </div>
+      </ng-template>
+    </p-card>
+  </div>
+</section>

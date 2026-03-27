@@ -1,0 +1,30 @@
+<section id="faq" class="landing-section">
+  <div class="landing-container faq-layout">
+    <div class="section-heading section-heading-center">
+      <p class="section-eyebrow">Questions</p>
+      <h2 class="section-title">A few things couples usually ask first</h2>
+    </div>
+
+    <p-accordion [value]="0" styleClass="landing-accordion">
+      <p-accordion-panel *ngFor="let item of items; let i = index" [value]="i">
+        <p-accordion-header>{{ item.q }}</p-accordion-header>
+        <p-accordion-content>
+          <p>{{ item.a }}</p>
+        </p-accordion-content>
+      </p-accordion-panel>
+    </p-accordion>
+
+    <p-card styleClass="landing-card faq-cta-card">
+      <ng-template pTemplate="content">
+        <p>
+          Still thinking it through? Start the form and we will take the conversation from there.
+        </p>
+        <p-button
+          label="Start Planning"
+          styleClass="landing-btn-primary"
+          (onClick)="startPlanning.emit()"
+        ></p-button>
+      </ng-template>
+    </p-card>
+  </div>
+</section>

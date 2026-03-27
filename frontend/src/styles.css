@@ -1,11 +1,321 @@
 @import "tailwindcss";
+@import "primeicons/primeicons.css";
 
-body {
-  background-color: #fdf6f3;
-  color: #1a1a1a;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+:root {
+  --purple: #4b1248;
+  --purple-mid: #6b1a67;
+  --purple-dark: #300b2e;
+  --off-white: #fdfaf9;
+  --blush-light: #fbf8f6;
+  --blush: #e5989b;
+  --coral: #ff5757;
+  --white: #ffffff;
+  --gold: #c9a96e;
+  --text-main: #4b1248;
+  --text-muted: #7a5a78;
+  --background: var(--off-white);
+  --foreground: var(--text-main);
+  --landing-width: 78rem;
+  --landing-radius: 2rem;
+  --landing-shadow: 0 24px 60px rgba(75, 18, 72, 0.08);
 }
 
-.font-serif {
-  font-family: Georgia, "Times New Roman", serif;
+@theme {
+  --color-shaadi-plum: var(--purple);
+  --color-shaadi-plum-deep: var(--purple-dark);
+  --color-shaadi-rose: #b01f68;
+  --color-shaadi-coral: #d84a82;
+  --color-shaadi-blush: #f8eef1;
+  --color-shaadi-cream: var(--off-white);
+  --color-shaadi-mist: #f3e5ea;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(216, 74, 130, 0.09), transparent 30%),
+    radial-gradient(circle at top right, rgba(75, 18, 72, 0.08), transparent 26%),
+    linear-gradient(180deg, #fffefd 0%, #fdf7f8 100%);
+  color: var(--foreground);
+  font-family: "Josefin Sans", "Segoe UI", sans-serif;
+  font-size: 1.02rem;
+  line-height: 1.72;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+p-toolbar {
+  width: 100%;
+}
+
+::selection {
+  background: rgba(176, 31, 104, 0.18);
+  color: #2d0e2a;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fdfaf9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f2e9e4;
+  border-radius: 999px;
+}
+
+.landing-container {
+  width: min(calc(100% - 2rem), var(--landing-width));
+  margin: 0 auto;
+}
+
+.landing-section {
+  padding: 6rem 0;
+}
+
+.landing-section-white {
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.landing-section-tint {
+  background: linear-gradient(180deg, rgba(248, 241, 242, 0.92), rgba(253, 250, 249, 0.98));
+}
+
+.landing-section-dark {
+  background:
+    radial-gradient(circle at top right, rgba(255, 180, 190, 0.12), transparent 25%),
+    linear-gradient(180deg, #4b1248 0%, #2f0c2d 100%);
+}
+
+.section-heading {
+  max-width: 42rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-heading-center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.section-eyebrow {
+  margin: 0;
+  color: #b01f68;
+  text-transform: uppercase;
+  letter-spacing: 0.34em;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.section-eyebrow-dark {
+  color: #ffcad2;
+}
+
+.section-title {
+  margin: 1rem 0 0;
+  color: var(--text-main);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+.section-title-dark {
+  color: var(--white);
+}
+
+.section-copy {
+  margin: 1.15rem 0 0;
+  color: var(--text-muted);
+  font-size: 1.08rem;
+}
+
+.landing-card.p-card {
+  border: 1px solid rgba(201, 169, 110, 0.14);
+  border-radius: var(--landing-radius);
+  background: rgba(255, 255, 255, 0.84);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--landing-shadow);
+  overflow: hidden;
+}
+
+.landing-card .p-card-body {
+  padding: 1.6rem;
+}
+
+.landing-card .p-card-title {
+  color: #b01f68;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 0.78rem;
+  margin-bottom: 0.65rem;
+}
+
+.landing-card .p-card-content {
+  padding: 0;
+}
+
+.landing-card-dark.p-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: none;
+}
+
+.landing-card-dark .p-card-body,
+.landing-card-dark .p-card-content {
+  color: var(--white);
+}
+
+.landing-tag.p-tag {
+  border-radius: 999px;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.78rem;
+  line-height: 1;
+}
+
+.landing-tag-soft.p-tag {
+  background: rgba(176, 31, 104, 0.08);
+  color: #8f285a;
+}
+
+.landing-tag-outline.p-tag {
+  background: transparent;
+  color: #8f285a;
+  border: 1px solid rgba(176, 31, 104, 0.14);
+}
+
+.landing-tag-light.p-tag {
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--text-main);
+}
+
+.landing-tag-hero.p-tag {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.landing-btn-primary.p-button,
+.landing-btn-secondary.p-button {
+  border-radius: 999px;
+  border: 0;
+  padding: 0.15rem;
+}
+
+.landing-btn-primary.p-button .p-button,
+.landing-btn-secondary.p-button .p-button {
+  border-radius: 999px;
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.landing-btn-primary.p-button .p-button {
+  border: 0;
+  color: #fff;
+  background: linear-gradient(135deg, #b01f68 0%, #d84a82 100%);
+  box-shadow: 0 12px 32px rgba(216, 74, 130, 0.3);
+}
+
+.landing-btn-secondary.p-button .p-button {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.landing-btn-primary.p-button:hover .p-button,
+.landing-btn-secondary.p-button:hover .p-button {
+  transform: translateY(-1px);
+}
+
+.landing-toolbar.p-toolbar {
+  max-width: var(--landing-width);
+  margin: 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(75, 18, 72, 0.88);
+  backdrop-filter: blur(18px);
+  padding: 0.6rem 0.8rem;
+  color: var(--white);
+}
+
+.landing-divider-dark.p-divider:before {
+  border-top-color: rgba(255, 255, 255, 0.14);
+}
+
+.image-card img {
+  width: 100%;
+  height: 18rem;
+  object-fit: cover;
+  border-radius: calc(var(--landing-radius) - 0.55rem);
+}
+
+.landing-accordion.p-accordion {
+  display: block;
+}
+
+.landing-accordion .p-accordionpanel {
+  margin-bottom: 1rem;
+  border: 1px solid rgba(201, 169, 110, 0.16);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 16px 40px rgba(75, 18, 72, 0.06);
+}
+
+.landing-accordion .p-accordionheader {
+  border: 0;
+}
+
+.landing-accordion .p-accordionheaderlink {
+  padding: 1.35rem 1.4rem;
+  color: var(--text-main);
+  font-weight: 600;
+  background: transparent;
+}
+
+.landing-accordion .p-accordioncontent-content {
+  padding: 0 1.4rem 1.35rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 767px) {
+  .landing-section {
+    padding: 4.5rem 0;
+  }
+
+  .landing-toolbar.p-toolbar {
+    border-radius: 1.4rem;
+  }
 }
