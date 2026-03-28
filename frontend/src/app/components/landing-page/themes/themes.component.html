@@ -1,0 +1,34 @@
+<section id="themes" class="section section-soft">
+  <div class="section-inner">
+    <div class="section-header">
+      <p class="section-label">✦ Wedding Themes</p>
+      <h2 class="section-title">
+        Not every wedding should
+        <br />
+        look the <em>same</em>
+      </h2>
+      <p class="section-sub">
+        A wedding should feel like you, not like a template. These are some of the worlds we can help you build.
+      </p>
+    </div>
+
+    <div class="themes-grid">
+      <article *ngFor="let theme of themes; let i = index" class="theme-card" [class.theme-card-featured]="i === 0">
+        <div class="tc-photo">
+          <img
+            [src]="theme.image"
+            [alt]="theme.name"
+            [style.object-position]="theme.objectPosition"
+            referrerpolicy="no-referrer"
+          />
+        </div>
+        <div class="tc-overlay"></div>
+        <span *ngIf="theme.featured" class="tc-pill" aria-label="Most loved" title="Most loved">❤</span>
+        <div class="tc-body">
+          <p class="tc-name">{{ theme.name }}</p>
+          <p class="tc-desc">{{ theme.description }}</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

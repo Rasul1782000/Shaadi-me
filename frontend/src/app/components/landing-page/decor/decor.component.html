@@ -1,0 +1,33 @@
+<section id="decoration" class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <p class="section-label">✦ Decoration Styles</p>
+      <h2 class="section-title">
+        Decor that feels
+        <br />
+        thought through, not <em>thrown together</em>
+      </h2>
+      <p class="section-sub">
+        Every detail should support the atmosphere you want to create, from the mandap to the last table setting.
+      </p>
+    </div>
+
+    <div class="decor-grid">
+      <article *ngFor="let style of styles" class="decor-card" [class.decor-card-large]="style.large">
+        <div class="decor-photo">
+          <div class="decor-photo-inner">
+            <img
+              [src]="style.image"
+              [alt]="style.name"
+              [style.object-position]="style.objectPosition"
+              referrerpolicy="no-referrer"
+            />
+          </div>
+          <div class="decor-label">
+            <p class="decor-name">{{ style.name }}</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

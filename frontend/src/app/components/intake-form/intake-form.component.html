@@ -1,14 +1,18 @@
-<div class="fixed inset-0 z-50 flex items-center justify-center bg-[#4b1248]/80 backdrop-blur-sm p-4">
-  <div class="bg-[#fdf6f3] rounded-3xl w-full max-w-2xl overflow-hidden shadow-2xl relative">
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-[#2a0e2a]/78 backdrop-blur-md p-4">
+  <div class="relative w-full max-w-3xl overflow-hidden rounded-[2rem] border border-white/15 bg-[linear-gradient(180deg,#fffefd_0%,#fbf2f5_100%)] shadow-[0_28px_80px_rgba(34,11,33,0.42)]">
+    <div class="pointer-events-none absolute inset-x-0 top-0 h-32 bg-[radial-gradient(circle_at_top,rgba(216,74,130,0.18),transparent_70%)]"></div>
     
     <!-- Confirmation Screen -->
-    <div *ngIf="isSubmitted" class="p-12 text-center">
-      <div class="flex justify-center mb-6">
-        <svg class="w-20 h-20 text-[#ff5757]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+    <div *ngIf="isSubmitted" class="relative p-10 text-center md:p-14">
+      <div class="mb-6 flex justify-center">
+        <div class="flex h-24 w-24 items-center justify-center rounded-full bg-[#fff0f5] shadow-inner shadow-[#d84a82]/10">
+          <svg class="w-16 h-16 text-[#d84a82]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        </div>
       </div>
-      <h2 class="text-3xl font-serif text-[#4b1248] mb-4">Congratulations, {{formData.brideName}} & {{formData.groomName}}!</h2>
-      <p class="text-gray-600 mb-8">Thank you for choosing ShaadiMe. We are going to take care of everything. Enjoy the process.</p>
-      <button (click)="close.emit()" class="w-full py-4 bg-[#ff5757] text-white rounded-full font-medium hover:bg-[#ff5757]/90 transition-colors">
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-[#b01f68]">Planner Started</p>
+      <h2 class="mb-4 text-3xl font-serif text-[#4b1248] md:text-4xl">Congratulations, {{formData.brideName}} & {{formData.groomName}}!</h2>
+      <p class="mx-auto mb-8 max-w-xl text-[15px] leading-7 text-[#6f5d6f]">Thank you for choosing ShaadiMe. We are going to take care of everything. Enjoy the process.</p>
+      <button (click)="close.emit()" class="w-full rounded-full bg-gradient-to-r from-[#b01f68] to-[#d84a82] py-4 text-white font-medium shadow-[0_16px_34px_rgba(216,74,130,0.24)] transition hover:-translate-y-0.5">
         Close
       </button>
     </div>
@@ -16,34 +20,37 @@
     <!-- Form Steps -->
     <div *ngIf="!isSubmitted">
       <!-- Progress Bar -->
-      <div class="h-2 bg-gray-200 w-full">
-        <div class="h-full bg-[#ff5757] transition-all duration-300" [style.width.%]="progress"></div>
+      <div class="h-1.5 w-full bg-[#eadde2]">
+        <div class="h-full bg-gradient-to-r from-[#b01f68] to-[#d84a82] transition-all duration-300" [style.width.%]="progress"></div>
       </div>
 
-      <button (click)="close.emit()" class="absolute top-6 right-6 text-gray-400 hover:text-gray-600">
+      <button (click)="close.emit()" class="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-[#7c687a] shadow-sm transition hover:text-[#4b1248]">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
       </button>
 
-      <div class="p-8 md:p-12">
-        <div class="min-h-[300px] flex flex-col justify-center">
-          <span class="text-[#ff5757] font-medium mb-2">Step {{currentStep + 1}} of {{steps.length}}</span>
-          <h2 class="text-3xl font-serif text-[#4b1248] mb-8">{{steps[currentStep].title}}</h2>
+      <div class="relative p-7 md:p-12">
+        <div class="mb-8 rounded-[1.5rem] border border-[#eedee4] bg-white/80 px-5 py-4 shadow-[0_10px_25px_rgba(75,18,72,0.04)]">
+          <span class="mb-2 block text-xs font-semibold uppercase tracking-[0.35em] text-[#b01f68]">Step {{currentStep + 1}} of {{steps.length}}</span>
+          <h2 class="text-3xl font-serif text-[#4b1248]">{{steps[currentStep].title}}</h2>
+        </div>
+
+        <div class="min-h-[320px] flex flex-col justify-center">
 
           <!-- Step 0: Names -->
           <div *ngIf="currentStep === 0" class="space-y-4">
-            <input type="text" [(ngModel)]="formData.brideName" placeholder="Bride's First Name" class="w-full p-4 rounded-xl border-2 border-gray-100 focus:border-[#fad6d6] outline-none transition-colors">
-            <input type="text" [(ngModel)]="formData.groomName" placeholder="Groom's First Name" class="w-full p-4 rounded-xl border-2 border-gray-100 focus:border-[#fad6d6] outline-none transition-colors">
+            <input type="text" [(ngModel)]="formData.brideName" placeholder="Bride's First Name" class="w-full rounded-2xl border border-[#eadde2] bg-white px-5 py-4 text-[#321032] shadow-sm outline-none transition focus:border-[#d9a1b7] focus:ring-4 focus:ring-[#f7dce5]">
+            <input type="text" [(ngModel)]="formData.groomName" placeholder="Groom's First Name" class="w-full rounded-2xl border border-[#eadde2] bg-white px-5 py-4 text-[#321032] shadow-sm outline-none transition focus:border-[#d9a1b7] focus:ring-4 focus:ring-[#f7dce5]">
           </div>
 
           <!-- Step 1: Phone -->
           <div *ngIf="currentStep === 1">
-            <input type="tel" [(ngModel)]="formData.phone" placeholder="10-digit mobile number" class="w-full p-4 rounded-xl border-2 border-gray-100 focus:border-[#fad6d6] outline-none transition-colors">
+            <input type="tel" [(ngModel)]="formData.phone" placeholder="10-digit mobile number" class="w-full rounded-2xl border border-[#eadde2] bg-white px-5 py-4 text-[#321032] shadow-sm outline-none transition focus:border-[#d9a1b7] focus:ring-4 focus:ring-[#f7dce5]">
           </div>
 
           <!-- Step 2: Date -->
           <div *ngIf="currentStep === 2" class="space-y-4">
-            <input type="date" [(ngModel)]="formData.date" class="w-full p-4 rounded-xl border-2 border-gray-100 focus:border-[#fad6d6] outline-none transition-colors">
-            <button (click)="formData.date = 'Not decided yet'" [ngClass]="{'border-[#ff5757] bg-[#ff5757]/5': formData.date === 'Not decided yet'}" class="w-full p-4 rounded-xl border-2 border-gray-100 transition-colors text-left">
+            <input type="date" [(ngModel)]="formData.date" class="w-full rounded-2xl border border-[#eadde2] bg-white px-5 py-4 text-[#321032] shadow-sm outline-none transition focus:border-[#d9a1b7] focus:ring-4 focus:ring-[#f7dce5]">
+            <button (click)="formData.date = 'Not decided yet'" [ngClass]="{'border-[#d84a82] bg-[#fff1f6] text-[#7b2954] shadow-[0_10px_20px_rgba(216,74,130,0.1)]': formData.date === 'Not decided yet'}" class="w-full rounded-2xl border border-[#eadde2] bg-white px-5 py-4 text-left text-[#5d4b5d] transition">
               Not decided yet
             </button>
           </div>
@@ -51,8 +58,8 @@
           <!-- Step 3: Budget -->
           <div *ngIf="currentStep === 3" class="grid grid-cols-1 gap-3">
             <button *ngFor="let opt of ['Under 5 Lakh', '5 to 15 Lakh', '15 to 30 Lakh', '30 Lakh and above', 'Flexible']" 
-                    (click)="formData.budget = opt" [ngClass]="{'border-[#ff5757] bg-[#ff5757]/5': formData.budget === opt}" 
-                    class="p-4 rounded-xl border-2 border-gray-100 transition-colors text-left">
+                    (click)="formData.budget = opt" [ngClass]="{'border-[#d84a82] bg-[#fff1f6] text-[#7b2954] shadow-[0_10px_20px_rgba(216,74,130,0.1)]': formData.budget === opt}" 
+                    class="rounded-2xl border border-[#eadde2] bg-white px-5 py-4 text-left text-[#5d4b5d] transition">
               {{opt}}
             </button>
           </div>
@@ -60,8 +67,8 @@
           <!-- Step 4: Type -->
           <div *ngIf="currentStep === 4" class="grid grid-cols-1 gap-3">
             <button *ngFor="let opt of ['Arranged Marriage', 'Love Marriage']" 
-                    (click)="formData.type = opt" [ngClass]="{'border-[#ff5757] bg-[#ff5757]/5': formData.type === opt}" 
-                    class="p-4 rounded-xl border-2 border-gray-100 transition-colors text-left">
+                    (click)="formData.type = opt" [ngClass]="{'border-[#d84a82] bg-[#fff1f6] text-[#7b2954] shadow-[0_10px_20px_rgba(216,74,130,0.1)]': formData.type === opt}" 
+                    class="rounded-2xl border border-[#eadde2] bg-white px-5 py-4 text-left text-[#5d4b5d] transition">
               {{opt}}
             </button>
           </div>
@@ -69,8 +76,8 @@
           <!-- Step 5: Guests -->
           <div *ngIf="currentStep === 5" class="grid grid-cols-1 gap-3">
             <button *ngFor="let opt of ['Under 100', '100 to 300', '300 to 600', '600 to 1000', 'Above 1000']" 
-                    (click)="formData.guests = opt" [ngClass]="{'border-[#ff5757] bg-[#ff5757]/5': formData.guests === opt}" 
-                    class="p-4 rounded-xl border-2 border-gray-100 transition-colors text-left">
+                    (click)="formData.guests = opt" [ngClass]="{'border-[#d84a82] bg-[#fff1f6] text-[#7b2954] shadow-[0_10px_20px_rgba(216,74,130,0.1)]': formData.guests === opt}" 
+                    class="rounded-2xl border border-[#eadde2] bg-white px-5 py-4 text-left text-[#5d4b5d] transition">
               {{opt}}
             </button>
           </div>
@@ -78,18 +85,18 @@
           <!-- Step 6: Preference -->
           <div *ngIf="currentStep === 6" class="grid grid-cols-1 gap-3">
             <button *ngFor="let opt of ['I want to be involved in every detail', 'I want to share my vision and let ShaadiMe handle the rest', 'Take care of everything, I trust ShaadiMe completely']" 
-                    (click)="formData.preference = opt" [ngClass]="{'border-[#ff5757] bg-[#ff5757]/5': formData.preference === opt}" 
-                    class="p-4 rounded-xl border-2 border-gray-100 transition-colors text-left">
+                    (click)="formData.preference = opt" [ngClass]="{'border-[#d84a82] bg-[#fff1f6] text-[#7b2954] shadow-[0_10px_20px_rgba(216,74,130,0.1)]': formData.preference === opt}" 
+                    class="rounded-2xl border border-[#eadde2] bg-white px-5 py-4 text-left text-[#5d4b5d] transition">
               {{opt}}
             </button>
           </div>
 
           <!-- Step 7: Inspiration -->
-          <div *ngIf="currentStep === 7" class="border-2 border-dashed border-gray-200 rounded-2xl p-12 text-center">
-            <svg class="w-12 h-12 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
-            <p class="text-gray-500">Upload up to 10 photos (JPG, PNG, PDF)</p>
+          <div *ngIf="currentStep === 7" class="rounded-[1.75rem] border border-dashed border-[#dcb7c4] bg-white/80 p-12 text-center">
+            <svg class="mx-auto mb-4 w-12 h-12 text-[#c18ca2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+            <p class="text-[#6f5d6f]">Upload up to 10 photos (JPG, PNG, PDF)</p>
             <input type="file" multiple class="hidden" id="file-upload">
-            <label for="file-upload" class="mt-4 inline-block px-6 py-2 bg-gray-100 rounded-full cursor-pointer hover:bg-gray-200 transition-colors">
+            <label for="file-upload" class="mt-4 inline-block rounded-full bg-[#f8eef1] px-6 py-2.5 cursor-pointer text-sm font-medium text-[#5f2e56] transition hover:bg-[#f2dfe7]">
               Browse Files
             </label>
           </div>
@@ -97,19 +104,19 @@
           <!-- Step 8: City -->
           <div *ngIf="currentStep === 8" class="grid grid-cols-1 gap-3">
             <button *ngFor="let opt of ['Bengaluru', 'Chennai', 'Hyderabad']" 
-                    (click)="formData.city = opt" [ngClass]="{'border-[#ff5757] bg-[#ff5757]/5': formData.city === opt}" 
-                    class="p-4 rounded-xl border-2 border-gray-100 transition-colors text-left">
+                    (click)="formData.city = opt" [ngClass]="{'border-[#d84a82] bg-[#fff1f6] text-[#7b2954] shadow-[0_10px_20px_rgba(216,74,130,0.1)]': formData.city === opt}" 
+                    class="rounded-2xl border border-[#eadde2] bg-white px-5 py-4 text-left text-[#5d4b5d] transition">
               {{opt}}
             </button>
           </div>
         </div>
 
-        <div class="mt-12 flex justify-between items-center">
-          <button (click)="back()" [disabled]="currentStep === 0" class="flex items-center text-gray-400 hover:text-[#4b1248] disabled:opacity-0 transition-all">
+        <div class="mt-12 flex items-center justify-between gap-4">
+          <button (click)="back()" [disabled]="currentStep === 0" class="flex items-center text-[#8a7788] hover:text-[#4b1248] disabled:opacity-0 transition-all">
             <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
             Back
           </button>
-          <button (click)="next()" [disabled]="isLoading" class="px-8 py-4 bg-[#ff5757] text-white rounded-full font-medium flex items-center hover:bg-[#ff5757]/90 transition-all shadow-lg shadow-[#ff5757]/20 disabled:opacity-50">
+          <button (click)="next()" [disabled]="isLoading" class="flex items-center rounded-full bg-gradient-to-r from-[#b01f68] to-[#d84a82] px-8 py-4 font-medium text-white shadow-[0_16px_34px_rgba(216,74,130,0.24)] transition hover:-translate-y-0.5 disabled:opacity-50">
             <span *ngIf="!isLoading">{{currentStep === steps.length - 1 ? 'Finish' : 'Next Step'}}</span>
             <span *ngIf="isLoading" class="flex items-center">
               <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">

@@ -1,0 +1,251 @@
+:host {
+  display: block;
+}
+
+.hero {
+  position: relative;
+  min-height: 64vh;
+  padding-top: 72px;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+}
+
+.hero-media,
+.hero-media-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+.hero-video.is-active {
+  opacity: 1;
+}
+
+.hero-media-overlay {
+  background:
+    linear-gradient(
+      to top,
+      rgb(18 8 17 / 0.88) 0%,
+      rgb(18 8 17 / 0.52) 30%,
+      rgb(18 8 17 / 0.18) 55%,
+      rgb(18 8 17 / 0.32) 100%
+    ),
+    linear-gradient(
+      to right,
+      rgb(16 7 15 / 0.58) 0%,
+      rgb(16 7 15 / 0.16) 32%,
+      rgb(16 7 15 / 0.12) 100%
+    );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px 32px;
+}
+
+.hero-shell {
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-copy {
+  max-width: 900px;
+  color: var(--white);
+}
+
+.hero-eyebrow {
+  margin: 0;
+  color: #ffecd6e0;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.76rem;
+  font-weight: 500;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.hero-h1 {
+  margin: 18px auto 0;
+  max-width: 12ch;
+  color: #fff;
+  font-family: var(--font-cormorant), sans-serif;
+  font-size: clamp(4.15rem, 7.6vw, 6.7rem);
+  line-height: 0.86;
+  letter-spacing: -0.045em;
+  font-weight: 500;
+}
+
+.hero-h1-line {
+  display: block;
+}
+
+.accent {
+  display: inline-block;
+  margin-left: 0.2em;
+  color: #d35a94;
+  font-style: italic;
+}
+
+.hero-highlight {
+  display: inline-flex;
+  margin: 28px auto 0;
+  padding: 15px 36px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(12px);
+  color: var(--off-white);
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  box-shadow: 0 10px 20px rgba(9, 4, 8, 0.16);
+}
+
+.hero-tagline {
+  max-width: min(44rem, 94vw);
+  margin: 26px auto 0;
+  color: var(--text-muted);
+  font-family: var(--font-lora), sans-serif;
+  text-align: center;
+  font-size: 1.02rem;
+  line-height: 1.8;
+}
+
+.hero-tagline-on-video {
+  color: rgb(255 248 248 / 0.85);
+}
+
+.hero-divider {
+  width: 48px;
+  height: 1px;
+  margin: 36px auto;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.hero-cta-simple {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-trust {
+  margin-top: 28px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #ffecd6e0;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.76rem;
+  font-family: var(--font-montserrat), sans-serif;
+  font-weight: 400;
+}
+
+.hero-trust .sep {
+  color: #ffecd6e0;
+  opacity: 0.35;
+}
+
+@media (max-width: 960px) {
+  .hero {
+    min-height: 56vh;
+  }
+
+  .hero-content {
+    padding: 46px 18px 24px;
+  }
+
+  .hero-h1 {
+    font-size: clamp(2.65rem, 11vw, 4rem);
+  }
+
+  .hero-tagline {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .hero-cta-simple {
+    gap: 12px;
+  }
+
+  .hero-primary-cta,
+  .btn-ghost {
+    width: 100%;
+  }
+
+  .hero-trust {
+    gap: 6px;
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    min-height: 52vh;
+  }
+
+  .hero-content {
+    padding-top: 40px;
+  }
+
+  .hero-h1 {
+    font-size: clamp(2.3rem, 14vw, 3.25rem);
+    line-height: 0.88;
+  }
+
+  .hero-highlight {
+    margin-top: 22px;
+    padding: 12px 18px;
+    font-size: 0.64rem;
+  }
+
+  .hero-divider {
+    margin: 26px auto;
+  }
+
+  .hero-tagline {
+    margin-top: 20px;
+    font-size: 0.84rem;
+  }
+
+  .hero-trust {
+    flex-wrap: nowrap;
+    gap: 4px;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+  }
+
+  .accent {
+    margin-left: 0;
+  }
+
+  .hero-cta-simple {
+    gap: 10px;
+  }
+}

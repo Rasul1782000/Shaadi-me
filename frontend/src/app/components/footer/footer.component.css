@@ -1,0 +1,98 @@
+:host {
+  display: block;
+}
+
+.site-footer {
+  background:
+    radial-gradient(circle at top right, rgba(255, 180, 190, 0.14), transparent 22%),
+    linear-gradient(180deg, #3f123f 0%, #260a24 100%);
+  color: var(--white);
+  padding: 5rem 0 2rem;
+}
+
+.footer-top {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.footer-logo {
+  height: 3.25rem;
+  width: auto;
+}
+
+.footer-brand p {
+  max-width: 34rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-grid {
+  display: grid;
+  gap: 2rem;
+  padding: 1rem 0 3rem;
+}
+
+.footer-grid h4 {
+  margin: 0 0 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.88rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.footer-grid ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-grid li,
+.footer-grid a {
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.footer-grid li + li {
+  margin-top: 0.7rem;
+}
+
+.footer-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.footer-socials a {
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.88rem;
+}
+
+.footer-bottom div {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+  .footer-top,
+  .footer-bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

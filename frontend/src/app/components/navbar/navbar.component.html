@@ -1,42 +1,47 @@
-<nav [ngClass]="{'bg-[#fdf6f3]/90 backdrop-blur-md shadow-sm': isScrolled, 'bg-transparent': !isScrolled}" 
-     class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-20 flex items-center">
-  <div class="max-w-7xl mx-auto px-6 w-full flex items-center justify-between">
-    <a routerLink="/" class="text-2xl font-bold tracking-tighter flex items-center">
-      <span class="text-[#4b1248]">Shaadi</span>
-      <span class="text-[#ff5757]">Me</span>
-    </a>
+<nav
+  class="site-nav"
+>
+  <div class="nav-shell">
+    <div class="nav-inner">
+      <a routerLink="/" class="nav-logo-wrap" (click)="closeMenu()">
+        <img src="ShaadiMe_Logo.png" alt="ShaadiMe" class="nav-logo" />
+      </a>
 
-    <!-- Desktop Menu -->
-    <div class="hidden lg:flex items-center space-x-8">
-      <a routerLink="/weddings" routerLinkActive="text-[#ff5757]" class="text-sm font-medium hover:text-[#ff5757] transition-colors">Weddings</a>
-      <a routerLink="/venues" routerLinkActive="text-[#ff5757]" class="text-sm font-medium hover:text-[#ff5757] transition-colors">Venues</a>
-      <a routerLink="/services" routerLinkActive="text-[#ff5757]" class="text-sm font-medium hover:text-[#ff5757] transition-colors">Services</a>
-      <a routerLink="/destinations" routerLinkActive="text-[#ff5757]" class="text-sm font-medium hover:text-[#ff5757] transition-colors">Destinations</a>
-      <a routerLink="/about" routerLinkActive="text-[#ff5757]" class="text-sm font-medium hover:text-[#ff5757] transition-colors">About us</a>
-      <a routerLink="/press" routerLinkActive="text-[#ff5757]" class="text-sm font-medium hover:text-[#ff5757] transition-colors">Press</a>
-      <a routerLink="/contact" routerLinkActive="text-[#ff5757]" class="text-sm font-medium hover:text-[#ff5757] transition-colors">Contact us</a>
-      <button class="px-6 py-2.5 bg-[#ff5757] text-white rounded-full font-medium hover:bg-[#ff5757]/90 transition-all shadow-md shadow-[#ff5757]/20">
-        Contact us
-      </button>
+      <div class="nav-links" aria-label="Primary">
+        <a *ngFor="let item of navItems" [href]="item.href" (click)="closeMenu()">{{ item.label }}</a>
+      </div>
+
+      <div class="nav-right">
+        <button
+          type="button"
+          class="btn-primary cta-primary nav-cta"
+          (click)="openPlanner()"
+        >
+          Start Planning →
+        </button>
+        <button
+          type="button"
+          (click)="toggleMenu()"
+          class="hamburger"
+          aria-label="Toggle menu"
+          [attr.aria-expanded]="isMenuOpen"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
-
-    <!-- Mobile Menu Button -->
-    <button (click)="toggleMenu()" class="lg:hidden text-[#4b1248]">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path *ngIf="!isMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-        <path *ngIf="isMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-      </svg>
-    </button>
   </div>
 
-  <!-- Mobile Menu -->
-  <div *ngIf="isMenuOpen" class="lg:hidden absolute top-20 left-0 right-0 bg-[#fdf6f3] border-b border-[#fad6d6]/30 p-6 space-y-4 shadow-xl">
-    <a routerLink="/weddings" (click)="toggleMenu()" class="block text-lg font-medium">Weddings</a>
-    <a routerLink="/venues" (click)="toggleMenu()" class="block text-lg font-medium">Venues</a>
-    <a routerLink="/services" (click)="toggleMenu()" class="block text-lg font-medium">Services</a>
-    <a routerLink="/destinations" (click)="toggleMenu()" class="block text-lg font-medium">Destinations</a>
-    <a routerLink="/about" (click)="toggleMenu()" class="block text-lg font-medium">About us</a>
-    <a routerLink="/press" (click)="toggleMenu()" class="block text-lg font-medium">Press</a>
-    <a routerLink="/contact" (click)="toggleMenu()" class="block text-lg font-medium">Contact us</a>
+  <div *ngIf="isMenuOpen" class="mobile-menu">
+    <a *ngFor="let item of navItems" [href]="item.href" (click)="closeMenu()">{{ item.label }}</a>
+    <button
+      type="button"
+      class="btn-primary cta-primary landing-btn-mobile"
+      (click)="openPlanner()"
+    >
+      Start Planning
+    </button>
   </div>
 </nav>

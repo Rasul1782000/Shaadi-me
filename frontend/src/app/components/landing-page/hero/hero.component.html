@@ -1,0 +1,67 @@
+<section id="hero" class="hero hero-carousel">
+  <div class="hero-media" aria-hidden="true">
+    <ng-container *ngFor="let slide of slides; let i = index">
+      <video
+        #heroVideo
+        class="hero-video"
+        [class.is-active]="activeIndex === i"
+        [src]="slide.video"
+        [attr.preload]="activeIndex === i ? 'auto' : 'metadata'"
+        [autoplay]="activeIndex === i ? true : null"
+        [muted]="true"
+        [defaultMuted]="true"
+        loop
+        playsinline
+      ></video>
+    </ng-container>
+    <div class="hero-media-overlay"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-shell">
+      <div class="hero-copy">
+        <p class="hero-eyebrow">✦ Wedding planning, handled with care</p>
+        <h1 class="hero-h1">
+          <span class="hero-h1-line">Craft a wedding</span>
+          <span class="hero-h1-line">
+            worth
+            <span class="accent">arriving for</span>
+          </span>
+        </h1>
+        <p class="hero-highlight">Plan your wedding in minutes</p>
+        <p class="hero-tagline hero-tagline-on-video">
+          Tell us how you want the day to feel. We handle the planning,
+          coordination, and follow-through so you can stay present for the
+          moments that matter.
+        </p>
+
+        <div class="hero-divider"></div>
+
+        <div class="hero-cta-simple">
+          <button
+            class="btn-primary hero-primary-cta"
+            type="button"
+            (click)="startPlanning.emit()"
+          >
+            Start my wedding planning
+            <span aria-hidden="true">→</span>
+          </button>
+          <button
+            class="btn-ghost"
+            type="button"
+            (click)="scrollToThemes()"
+          >
+            Explore themes
+          </button>
+        </div>
+        <div class="hero-trust">
+          <span>Bengaluru</span>
+          <span class="sep">·</span>
+          <span>Chennai</span>
+          <span class="sep">·</span>
+          <span>Hyderabad</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

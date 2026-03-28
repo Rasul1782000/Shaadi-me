@@ -1,0 +1,45 @@
+<section id="faq" class="section faq-section">
+  <div class="section-inner faq-shell">
+    <div class="faq-left">
+      <p class="section-label faq-kicker">✦ Questions</p>
+      <h2 class="faq-title">
+        Frequently Asked
+        <br />
+        Questions
+      </h2>
+
+      <div class="faq-card">
+        <div class="faq-avatar" aria-hidden="true">
+          <img src="/ShaadiMe_Logo.png" alt="" />
+        </div>
+        <p class="faq-card-title">Book a 15 min call</p>
+        <p class="faq-card-copy">
+          If you have any questions, just book a 15-minute call with us before subscribing.
+        </p>
+        <button
+          type="button"
+          class="btn-primary cta-primary faq-card-cta"
+          (click)="startPlanning.emit()"
+        >
+          Start Planning →
+        </button>
+      </div>
+    </div>
+
+    <div class="faq-right">
+      <div
+        *ngFor="let item of items; let i = index"
+        class="faq-item"
+        [class.is-open]="openIndex === i"
+      >
+        <button type="button" class="faq-question" (click)="toggle(i)" [attr.aria-expanded]="openIndex === i">
+          <span>{{ item.q }}</span>
+          <span class="faq-icon" aria-hidden="true">{{ openIndex === i ? '×' : '+' }}</span>
+        </button>
+        <div class="faq-answer">
+          <p>{{ item.a }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

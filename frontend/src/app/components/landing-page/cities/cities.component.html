@@ -1,0 +1,32 @@
+<section id="cities" class="section section-city">
+  <div class="section-inner">
+    <div class="section-header is-centered">
+      <p class="section-label">✦ Now Live In</p>
+      <h2 class="section-title">
+        Planning weddings in
+        <br />
+        the cities we know <em>best</em>
+      </h2>
+      <p class="section-sub">
+        We are starting in Hyderabad, Bengaluru, and Chennai, with more cities launching soon. We bring the same promise to each: less coordination for you, more confidence on the day.
+      </p>
+    </div>
+
+    <div class="cities-row">
+      <div *ngFor="let city of cities" class="city-item">
+        <div class="city-orb">
+          <img
+            [src]="city.image"
+            [alt]="city.name"
+            [style.object-position]="city.objectPosition"
+            referrerpolicy="no-referrer"
+          />
+        </div>
+        <p class="city-name">{{ city.name }}</p>
+        <p class="city-tag">{{ city.tagline }}</p>
+      </div>
+    </div>
+
+    <p class="cities-soon">More cities launching soon</p>
+  </div>
+</section>

@@ -1,0 +1,33 @@
+<section id="venues" class="section section-muted">
+  <div class="section-inner">
+    <div class="section-header">
+      <p class="section-label">✦ Types of Venues</p>
+      <h2 class="section-title">
+        The right venue changes
+        <br />
+        the whole <em>mood</em>
+      </h2>
+      <p class="section-sub">
+        From heritage properties to polished hotel ballrooms, the setting shapes the entire experience of the day.
+      </p>
+    </div>
+
+    <div class="venues-scroll" role="list">
+      <article *ngFor="let venue of venues" class="venue-card">
+        <div class="venue-photo">
+          <img
+            [src]="venue.image"
+            [alt]="venue.name"
+            [style.object-position]="venue.objectPosition"
+            referrerpolicy="no-referrer"
+          />
+        </div>
+        <div class="venue-info">
+          <span class="venue-kicker">{{ venue.tag }}</span>
+          <p class="venue-name">{{ venue.name }}</p>
+          <p class="venue-desc">{{ venue.description }}</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

@@ -6,24 +6,24 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up()
+    public function up(): void
     {
-        Schema::create('leads', function (Blueprint $user) {
-            $user->id();
-            $user->string('bride_name');
-            $user->string('groom_name');
-            $user->string('phone');
-            $user->string('wedding_date')->nullable();
-            $user->string('budget')->nullable();
-            $user->string('wedding_type')->nullable();
-            $user->string('guest_count')->nullable();
-            $user->text('planning_preference')->nullable();
-            $user->string('city')->nullable();
-            $user->timestamps();
+        Schema::create('leads', function (Blueprint $table) {
+            $table->id();
+            $table->string('bride_name');
+            $table->string('groom_name');
+            $table->string('phone');
+            $table->string('wedding_date')->nullable();
+            $table->string('budget')->nullable();
+            $table->string('wedding_type')->nullable();
+            $table->string('guest_count')->nullable();
+            $table->text('planning_preference')->nullable();
+            $table->string('city')->nullable();
+            $table->timestamps();
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('leads');
     }

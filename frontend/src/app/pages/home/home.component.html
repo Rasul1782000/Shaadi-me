@@ -1,45 +1,16 @@
-<!-- Hero Section -->
-<section class="relative h-screen flex items-center justify-center overflow-hidden">
-  <div class="absolute inset-0 z-0">
-    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1920" 
-         alt="Wedding Hero" class="w-full h-full object-cover opacity-20" referrerPolicy="no-referrer">
-    <div class="absolute inset-0 bg-gradient-to-b from-[#fdf6f3] via-transparent to-[#fdf6f3]"></div>
-  </div>
-  
-  <div class="relative z-10 text-center px-6 max-w-4xl">
-    <h1 class="text-6xl md:text-8xl font-serif leading-tight mb-8 text-[#4b1248]">
-      Come to your wedding <br>
-      <span class="italic text-[#ff5757]">as a guest.</span>
-    </h1>
-    <p class="text-xl md:text-2xl text-gray-600 mb-12 max-w-2xl mx-auto">
-      We handle the vendors, the quotes, and the chaos. You handle the celebration.
-    </p>
-    <button (click)="showForm = true" 
-            class="px-12 py-5 bg-[#ff5757] text-white rounded-full text-xl font-medium hover:scale-105 transition-all shadow-xl shadow-[#ff5757]/30 flex items-center mx-auto">
-      Start Planning Your Dream Day
-      <svg class="ml-3 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-    </button>
-  </div>
-</section>
+<main class="landing-page">
+  <app-hero
+    [slides]="heroSlides"
+    (startPlanning)="plannerUi.open()"
+  ></app-hero>
 
-<!-- Wedding Themes -->
-<section class="py-24 px-6 max-w-7xl mx-auto">
-  <div class="mb-16 text-center">
-    <h2 class="text-4xl font-serif mb-4 text-[#4b1248]">Wedding Themes</h2>
-    <p class="text-gray-500">Inspirational aesthetics tailored to your story.</p>
-  </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    <div *ngFor="let theme of themes" class="group relative h-[400px] rounded-3xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all">
-      <img [src]="theme.img" [alt]="theme.name" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerPolicy="no-referrer">
-      <div class="absolute inset-0 bg-gradient-to-t from-[#4b1248]/90 via-transparent to-transparent"></div>
-      <div class="absolute bottom-0 p-8">
-        <h3 class="text-2xl font-serif text-white mb-2">{{theme.name}}</h3>
-        <p class="text-white/70 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">{{theme.desc}}</p>
-      </div>
-    </div>
-  </div>
-</section>
+  <app-cities class="landing-section-soft" [cities]="cities"></app-cities>
+  <app-decor class="landing-section-cream" [styles]="decorStyles"></app-decor>
+  <app-themes class="landing-section-alt" [themes]="themes"></app-themes>
+  <app-venues class="landing-section-soft" [venues]="venues"></app-venues>
+  <app-faq class="landing-section-muted" [items]="faqs" (startPlanning)="plannerUi.open()"></app-faq>
 
+<<<<<<< HEAD
 <!-- Weddings Section -->
 <section class="py-24 bg-[#4b1248] text-white overflow-hidden">
   <div class="max-w-7xl mx-auto px-6">
@@ -167,3 +138,7 @@
 
 <!-- Intake Form Modal -->
 <app-intake-form *ngIf="showForm" (close)="showForm = false"></app-intake-form>
+=======
+  <app-intake-form *ngIf="plannerUi.isOpen()" (close)="plannerUi.close()"></app-intake-form>
+</main>
+>>>>>>> 6cc1b499a2c302651d6c62e4f328730c6eca8e19
