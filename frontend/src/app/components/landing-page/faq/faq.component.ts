@@ -4,8 +4,7 @@ import { FaqItem } from '../landing.types';
 
 @Component({
   selector: 'app-faq',
-  standalone: true,
-  imports: [CommonModule],
+  standalone: false,
   templateUrl: './faq.component.html',
   styleUrl: './faq.component.css'
 })

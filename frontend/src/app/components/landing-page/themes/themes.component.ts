@@ -4,8 +4,7 @@ import { ThemeCard } from '../landing.types';
 
 @Component({
   selector: 'app-themes',
-  standalone: true,
-  imports: [CommonModule],
+  standalone: false,
   templateUrl: './themes.component.html',
   styleUrl: './themes.component.css'
 })

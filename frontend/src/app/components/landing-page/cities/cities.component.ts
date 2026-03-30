@@ -4,8 +4,7 @@ import { CityCard } from '../landing.types';
 
 @Component({
   selector: 'app-cities',
-  standalone: true,
-  imports: [CommonModule],
+  standalone: false,
   templateUrl: './cities.component.html',
   styleUrl: './cities.component.css'
 })

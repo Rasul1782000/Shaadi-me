@@ -4,8 +4,7 @@ import { VenueCard } from '../landing.types';
 
 @Component({
   selector: 'app-venues',
-  standalone: true,
-  imports: [CommonModule],
+  standalone: false,
   templateUrl: './venues.component.html',
   styleUrl: './venues.component.css'
 })

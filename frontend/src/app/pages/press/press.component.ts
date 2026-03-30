@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-press',
-  standalone: true,
-  imports: [CommonModule],
+  standalone: false,
   templateUrl: './press.component.html',
   styleUrl: './press.component.css'
 })

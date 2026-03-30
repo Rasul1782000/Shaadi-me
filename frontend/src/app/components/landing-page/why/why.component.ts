@@ -6,8 +6,7 @@ import { WhyCard } from '../landing.types';
 
 @Component({
   selector: 'app-why',
-  standalone: true,
-  imports: [CommonModule, CardModule, DividerModule],
+  standalone: false,
   templateUrl: './why.component.html',
   styleUrl: './why.component.css'
 })

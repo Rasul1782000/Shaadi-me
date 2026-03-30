@@ -5,8 +5,7 @@ import { LeadService } from '../../services/lead.service';
 
 @Component({
   selector: 'app-intake-form',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
+  standalone: false,
   templateUrl: './intake-form.component.html',
   styleUrl: './intake-form.component.css'
 })

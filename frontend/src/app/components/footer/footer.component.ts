@@ -5,8 +5,7 @@ import { DividerModule } from 'primeng/divider';
 
 @Component({
   selector: 'app-footer',
-  standalone: true,
-  imports: [CommonModule, DividerModule],
+  standalone: false,
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.css'
 })

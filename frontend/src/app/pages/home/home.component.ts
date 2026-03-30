@@ -19,17 +19,7 @@ import {
 
 @Component({
   selector: 'app-home',
-  standalone: true,
-  imports: [
-    CommonModule,
-    IntakeFormComponent,
-    HeroComponent,
-    CitiesComponent,
-    DecorComponent,
-    ThemesComponent,
-    VenuesComponent,
-    FaqComponent
-  ],
+  standalone: false,
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

@@ -5,8 +5,7 @@ import { PlannerUiService } from '../../services/planner-ui.service';
 
 @Component({
   selector: 'app-navbar',
-  standalone: true,
-  imports: [CommonModule, RouterLink],
+  standalone: false,
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })

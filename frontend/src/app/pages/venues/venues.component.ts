@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-venues',
-  standalone: true,
-  imports: [CommonModule],
+  selector: 'app-page-venues',
+  standalone: false,
   templateUrl: './venues.component.html',
   styleUrl: './venues.component.css'
 })

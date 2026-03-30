@@ -14,8 +14,7 @@ import { HeroSlide } from '../landing.types';
 
 @Component({
   selector: 'app-hero',
-  standalone: true,
-  imports: [CommonModule],
+  standalone: false,
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.css'
 })

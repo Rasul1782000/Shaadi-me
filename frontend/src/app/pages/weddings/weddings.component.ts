@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-weddings',
-  standalone: true,
-  imports: [],
+  standalone: false,
   templateUrl: './weddings.component.html',
   styleUrl: './weddings.component.css'
 })
