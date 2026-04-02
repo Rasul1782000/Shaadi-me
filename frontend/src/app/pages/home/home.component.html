@@ -1,14 +1,12 @@
 <main class="landing-page">
   <app-hero
     [slides]="heroSlides"
-    (startPlanning)="plannerUi.open()"
+    (startPlanning)="goToPlan()"
   ></app-hero>
 
   <app-cities class="landing-section-soft" [cities]="cities"></app-cities>
   <app-decor class="landing-section-cream" [styles]="decorStyles"></app-decor>
   <app-themes class="landing-section-alt" [themes]="themes"></app-themes>
   <app-venues class="landing-section-soft" [venues]="venues"></app-venues>
-  <app-faq class="landing-section-muted" [items]="faqs" (startPlanning)="plannerUi.open()"></app-faq>
-
-  <app-intake-form *ngIf="plannerUi.isOpen()" (close)="plannerUi.close()"></app-intake-form>
+  <app-faq class="landing-section-muted" [items]="faqs" (startPlanning)="goToPlan()"></app-faq>
 </main>

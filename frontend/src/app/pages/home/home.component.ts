@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { IntakeFormComponent } from '../../components/intake-form/intake-form.component';
-import { PlannerUiService } from '../../services/planner-ui.service';
 import { HeroComponent } from '../../components/landing-page/hero/hero.component';
 import { CitiesComponent } from '../../components/landing-page/cities/cities.component';
 import { DecorComponent } from '../../components/landing-page/decor/decor.component';
@@ -72,5 +71,10 @@ export class HomeComponent {
     { q: 'Do you work with destination weddings?', a: 'Yes, destination-style celebrations are part of the worlds we can help shape, whether they are within India or in a getaway setting.' }
   ];
 
-  constructor(public readonly plannerUi: PlannerUiService) { }
+  constructor(private readonly router: Router) { }
+
+  goToPlan(): void {
+    this.router.navigate(['/plan']);
+  }
 }
+

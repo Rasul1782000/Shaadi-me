@@ -1,134 +1,296 @@
-<div class="fixed inset-0 z-50 flex items-center justify-center bg-[#2a0e2a]/78 backdrop-blur-md p-4">
-  <div class="relative w-full max-w-3xl overflow-hidden rounded-[2rem] border border-white/15 bg-[linear-gradient(180deg,#fffefd_0%,#fbf2f5_100%)] shadow-[0_28px_80px_rgba(34,11,33,0.42)]">
-    <div class="pointer-events-none absolute inset-x-0 top-0 h-32 bg-[radial-gradient(circle_at_top,rgba(216,74,130,0.18),transparent_70%)]"></div>
-    
-    <!-- Confirmation Screen -->
-    <div *ngIf="isSubmitted" class="relative p-10 text-center md:p-14">
-      <div class="mb-6 flex justify-center">
-        <div class="flex h-24 w-24 items-center justify-center rounded-full bg-[#fff0f5] shadow-inner shadow-[#d84a82]/10">
-          <svg class="w-16 h-16 text-[#d84a82]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-        </div>
-      </div>
-      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-[#b01f68]">Planner Started</p>
-      <h2 class="mb-4 text-3xl font-serif text-[#4b1248] md:text-4xl">Congratulations, {{formData.brideName}} & {{formData.groomName}}!</h2>
-      <p class="mx-auto mb-8 max-w-xl text-[15px] leading-7 text-[#6f5d6f]">Thank you for choosing ShaadiMe. We are going to take care of everything. Enjoy the process.</p>
-      <button (click)="close.emit()" class="w-full rounded-full bg-gradient-to-r from-[#b01f68] to-[#d84a82] py-4 text-white font-medium shadow-[0_16px_34px_rgba(216,74,130,0.24)] transition hover:-translate-y-0.5">
-        Close
-      </button>
+<!-- ─── SUCCESS STATE ─── -->
+<div *ngIf="submitted" class="pf-success">
+  <div class="pf-success-card">
+    <div class="pf-success-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+        <polyline points="22 4 12 14.01 9 11.01"/>
+      </svg>
     </div>
+    <h2 class="pf-success-title">We Received Your Details</h2>
+    <p class="pf-success-msg">
+      Thank you, <strong>{{ form.p1name || 'there' }}</strong>.
+      Our team will reach out within 24 hours to begin shaping your celebration.
+    </p>
+    <div class="pf-success-divider"></div>
+    <div class="pf-success-summary">
+      <div class="pf-summ-row" *ngFor="let r of reviewRows">
+        <span class="pf-summ-label">{{ r.label }}</span>
+        <span class="pf-summ-value">{{ r.value }}</span>
+      </div>
+    </div>
+    <a routerLink="/" class="pf-success-btn">Back to Home</a>
+  </div>
+</div>
 
-    <!-- Form Steps -->
-    <div *ngIf="!isSubmitted">
-      <!-- Progress Bar -->
-      <div class="h-1.5 w-full bg-[#eadde2]">
-        <div class="h-full bg-gradient-to-r from-[#b01f68] to-[#d84a82] transition-all duration-300" [style.width.%]="progress"></div>
+<!-- ─── FORM CARD ─── -->
+<div *ngIf="!submitted" class="pf-card">
+
+  <!-- Top ornament -->
+  <div class="pf-ornament-top">
+    <span class="pf-brand-sm">ShaadiMe</span>
+    <span class="pf-star-sm">✦</span>
+    <span class="pf-brand-tagline">Planning Your Celebration</span>
+  </div>
+
+  <!-- Step progress -->
+  <div class="pf-steps-strip">
+    <button
+      *ngFor="let s of stepLabels; let i = index"
+      class="pf-step-btn"
+      [class.active]="step === i"
+      [class.done]="step > i"
+      (click)="jumpTo(i)"
+      type="button">
+      <span class="pf-step-num">{{ s.num }}</span>
+      <span class="pf-step-label">{{ s.label }}</span>
+    </button>
+  </div>
+
+  <!-- Body -->
+  <div class="pf-body" [ngSwitch]="step">
+
+    <!-- ══════ STEP 0  — The Couple ══════ -->
+    <div *ngSwitchCase="0" class="pf-step-content">
+      <p class="pf-step-intro">Let's start with the two of you. We'll use this to personalise everything ahead.</p>
+
+      <div class="pf-field-row">
+        <div class="pf-field">
+          <label class="pf-label" for="p1name">Partner One</label>
+          <input id="p1name" class="pf-input" type="text" placeholder="e.g. Priya"
+                 [(ngModel)]="form.p1name" />
+        </div>
+        <div class="pf-field">
+          <label class="pf-label" for="p2name">Partner Two</label>
+          <input id="p2name" class="pf-input" type="text" placeholder="e.g. Arjun"
+                 [(ngModel)]="form.p2name" />
+        </div>
       </div>
 
-      <button (click)="close.emit()" class="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-[#7c687a] shadow-sm transition hover:text-[#4b1248]">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-      </button>
+      <div class="pf-field">
+        <label class="pf-label" for="email">Email</label>
+        <input id="email" class="pf-input" type="email" placeholder="you@example.com"
+               [(ngModel)]="form.email" />
+      </div>
 
-      <div class="relative p-7 md:p-12">
-        <div class="mb-8 rounded-[1.5rem] border border-[#eedee4] bg-white/80 px-5 py-4 shadow-[0_10px_25px_rgba(75,18,72,0.04)]">
-          <span class="mb-2 block text-xs font-semibold uppercase tracking-[0.35em] text-[#b01f68]">Step {{currentStep + 1}} of {{steps.length}}</span>
-          <h2 class="text-3xl font-serif text-[#4b1248]">{{steps[currentStep].title}}</h2>
-        </div>
+      <div class="pf-field">
+        <label class="pf-label" for="phone">Phone</label>
+        <input id="phone" class="pf-input" type="tel" placeholder="+91 98765 43210"
+               [(ngModel)]="form.phone" />
+      </div>
 
-        <div class="min-h-[320px] flex flex-col justify-center">
-
-          <!-- Step 0: Names -->
-          <div *ngIf="currentStep === 0" class="space-y-4">
-            <input type="text" [(ngModel)]="formData.brideName" placeholder="Bride's First Name" class="w-full rounded-2xl border border-[#eadde2] bg-white px-5 py-4 text-[#321032] shadow-sm outline-none transition focus:border-[#d9a1b7] focus:ring-4 focus:ring-[#f7dce5]">
-            <input type="text" [(ngModel)]="formData.groomName" placeholder="Groom's First Name" class="w-full rounded-2xl border border-[#eadde2] bg-white px-5 py-4 text-[#321032] shadow-sm outline-none transition focus:border-[#d9a1b7] focus:ring-4 focus:ring-[#f7dce5]">
-          </div>
-
-          <!-- Step 1: Phone -->
-          <div *ngIf="currentStep === 1">
-            <input type="tel" [(ngModel)]="formData.phone" placeholder="10-digit mobile number" class="w-full rounded-2xl border border-[#eadde2] bg-white px-5 py-4 text-[#321032] shadow-sm outline-none transition focus:border-[#d9a1b7] focus:ring-4 focus:ring-[#f7dce5]">
-          </div>
-
-          <!-- Step 2: Date -->
-          <div *ngIf="currentStep === 2" class="space-y-4">
-            <input type="date" [(ngModel)]="formData.date" class="w-full rounded-2xl border border-[#eadde2] bg-white px-5 py-4 text-[#321032] shadow-sm outline-none transition focus:border-[#d9a1b7] focus:ring-4 focus:ring-[#f7dce5]">
-            <button (click)="formData.date = 'Not decided yet'" [ngClass]="{'border-[#d84a82] bg-[#fff1f6] text-[#7b2954] shadow-[0_10px_20px_rgba(216,74,130,0.1)]': formData.date === 'Not decided yet'}" class="w-full rounded-2xl border border-[#eadde2] bg-white px-5 py-4 text-left text-[#5d4b5d] transition">
-              Not decided yet
-            </button>
-          </div>
-
-          <!-- Step 3: Budget -->
-          <div *ngIf="currentStep === 3" class="grid grid-cols-1 gap-3">
-            <button *ngFor="let opt of ['Under 5 Lakh', '5 to 15 Lakh', '15 to 30 Lakh', '30 Lakh and above', 'Flexible']" 
-                    (click)="formData.budget = opt" [ngClass]="{'border-[#d84a82] bg-[#fff1f6] text-[#7b2954] shadow-[0_10px_20px_rgba(216,74,130,0.1)]': formData.budget === opt}" 
-                    class="rounded-2xl border border-[#eadde2] bg-white px-5 py-4 text-left text-[#5d4b5d] transition">
-              {{opt}}
-            </button>
-          </div>
-
-          <!-- Step 4: Type -->
-          <div *ngIf="currentStep === 4" class="grid grid-cols-1 gap-3">
-            <button *ngFor="let opt of ['Arranged Marriage', 'Love Marriage']" 
-                    (click)="formData.type = opt" [ngClass]="{'border-[#d84a82] bg-[#fff1f6] text-[#7b2954] shadow-[0_10px_20px_rgba(216,74,130,0.1)]': formData.type === opt}" 
-                    class="rounded-2xl border border-[#eadde2] bg-white px-5 py-4 text-left text-[#5d4b5d] transition">
-              {{opt}}
-            </button>
-          </div>
-
-          <!-- Step 5: Guests -->
-          <div *ngIf="currentStep === 5" class="grid grid-cols-1 gap-3">
-            <button *ngFor="let opt of ['Under 100', '100 to 300', '300 to 600', '600 to 1000', 'Above 1000']" 
-                    (click)="formData.guests = opt" [ngClass]="{'border-[#d84a82] bg-[#fff1f6] text-[#7b2954] shadow-[0_10px_20px_rgba(216,74,130,0.1)]': formData.guests === opt}" 
-                    class="rounded-2xl border border-[#eadde2] bg-white px-5 py-4 text-left text-[#5d4b5d] transition">
-              {{opt}}
-            </button>
-          </div>
-
-          <!-- Step 6: Preference -->
-          <div *ngIf="currentStep === 6" class="grid grid-cols-1 gap-3">
-            <button *ngFor="let opt of ['I want to be involved in every detail', 'I want to share my vision and let ShaadiMe handle the rest', 'Take care of everything, I trust ShaadiMe completely']" 
-                    (click)="formData.preference = opt" [ngClass]="{'border-[#d84a82] bg-[#fff1f6] text-[#7b2954] shadow-[0_10px_20px_rgba(216,74,130,0.1)]': formData.preference === opt}" 
-                    class="rounded-2xl border border-[#eadde2] bg-white px-5 py-4 text-left text-[#5d4b5d] transition">
-              {{opt}}
-            </button>
-          </div>
-
-          <!-- Step 7: Inspiration -->
-          <div *ngIf="currentStep === 7" class="rounded-[1.75rem] border border-dashed border-[#dcb7c4] bg-white/80 p-12 text-center">
-            <svg class="mx-auto mb-4 w-12 h-12 text-[#c18ca2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
-            <p class="text-[#6f5d6f]">Upload up to 10 photos (JPG, PNG, PDF)</p>
-            <input type="file" multiple class="hidden" id="file-upload">
-            <label for="file-upload" class="mt-4 inline-block rounded-full bg-[#f8eef1] px-6 py-2.5 cursor-pointer text-sm font-medium text-[#5f2e56] transition hover:bg-[#f2dfe7]">
-              Browse Files
-            </label>
-          </div>
-
-          <!-- Step 8: City -->
-          <div *ngIf="currentStep === 8" class="grid grid-cols-1 gap-3">
-            <button *ngFor="let opt of ['Bengaluru', 'Chennai', 'Hyderabad']" 
-                    (click)="formData.city = opt" [ngClass]="{'border-[#d84a82] bg-[#fff1f6] text-[#7b2954] shadow-[0_10px_20px_rgba(216,74,130,0.1)]': formData.city === opt}" 
-                    class="rounded-2xl border border-[#eadde2] bg-white px-5 py-4 text-left text-[#5d4b5d] transition">
-              {{opt}}
-            </button>
-          </div>
-        </div>
-
-        <div class="mt-12 flex items-center justify-between gap-4">
-          <button (click)="back()" [disabled]="currentStep === 0" class="flex items-center text-[#8a7788] hover:text-[#4b1248] disabled:opacity-0 transition-all">
-            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-            Back
+      <div class="pf-field">
+        <label class="pf-label">Wedding Tradition</label>
+        <div class="pf-pill-group">
+          <button
+            *ngFor="let c of communities"
+            class="pf-pill"
+            [class.active]="form.community === c"
+            (click)="form.community = c; onCommunityChange()"
+            type="button">
+            {{ c }}
           </button>
-          <button (click)="next()" [disabled]="isLoading" class="flex items-center rounded-full bg-gradient-to-r from-[#b01f68] to-[#d84a82] px-8 py-4 font-medium text-white shadow-[0_16px_34px_rgba(216,74,130,0.24)] transition hover:-translate-y-0.5 disabled:opacity-50">
-            <span *ngIf="!isLoading">{{currentStep === steps.length - 1 ? 'Finish' : 'Next Step'}}</span>
-            <span *ngIf="isLoading" class="flex items-center">
-              <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-              Processing...
-            </span>
-            <svg *ngIf="!isLoading" class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </div>
+      </div>
+
+      <!-- Events preview when community selected -->
+      <div *ngIf="form.events.length" class="pf-events-preview">
+        <p class="pf-events-preview-label">Events for a {{ form.community }} wedding — you can customise these in the next step.</p>
+        <div class="pf-events-preview-pills">
+          <span
+            *ngFor="let e of form.events"
+            class="pf-event-preview-pill"
+            [class.required]="e.required">
+            {{ e.name }}
+          </span>
+        </div>
+      </div>
+
+      <div class="pf-field">
+        <label class="pf-label">Where are you planning?</label>
+        <div class="pf-pill-group">
+          <button
+            *ngFor="let city of planningCities"
+            class="pf-pill"
+            [class.active]="form.city === city"
+            (click)="form.city = city"
+            type="button">
+            {{ city }}
           </button>
         </div>
       </div>
     </div>
+
+    <!-- ══════ STEP 1 — The Day ══════ -->
+    <div *ngSwitchCase="1" class="pf-step-content">
+      <p class="pf-step-intro">Key details about the wedding day itself — dates, scale, and budget.</p>
+
+      <div class="pf-field-row">
+        <div class="pf-field">
+          <label class="pf-label" for="wdate">Wedding Date</label>
+          <input id="wdate" class="pf-input" type="date" [min]="minDate"
+                 [(ngModel)]="form.weddingDate" />
+        </div>
+        <div class="pf-field">
+          <label class="pf-label">Guest Count</label>
+          <select class="pf-input" [(ngModel)]="form.guests">
+            <option value="">Select range</option>
+            <option *ngFor="let g of guestOptions" [value]="g">{{ g }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="pf-field">
+        <label class="pf-label">Venue Preference</label>
+        <select class="pf-input" [(ngModel)]="form.venueType">
+          <option value="">Select venue type</option>
+          <option *ngFor="let v of venueOptions" [value]="v">{{ v }}</option>
+        </select>
+      </div>
+
+      <!-- Budget slider -->
+      <div class="pf-field">
+        <label class="pf-label">Overall Budget</label>
+        <div class="pf-budget-display">{{ budgetDisplay }}</div>
+        <div class="pf-budget-slider-container">
+          <input
+            type="range"
+            class="pf-budget-input"
+            [min]="1"
+            [max]="200"
+            [(ngModel)]="form.budget"
+            [style.--fill]="budgetTrackFill + '%'" />
+          <div class="pf-budget-ticks">
+            <span>₹1L</span>
+            <span>₹25L</span>
+            <span>₹50L</span>
+            <span>₹1Cr</span>
+            <span>₹2Cr+</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ceremony events section -->
+      <div *ngIf="form.events.length" class="pf-events-section">
+        <div class="pf-events-header">
+          <span class="pf-events-title">Ceremony sequence</span>
+          <span class="pf-events-count">{{ includedCount }} event{{ includedCount === 1 ? '' : 's' }} selected</span>
+        </div>
+        <p class="pf-events-hint">Tap to include or skip events. Required events can't be removed.</p>
+
+        <div class="pf-events-grid">
+          <button
+            *ngFor="let e of sortedEvents"
+            class="pf-event-card"
+            [class.included]="e.included"
+            [class.excluded]="!e.included"
+            [class.required]="e.required"
+            (click)="toggleEvent(e.type)"
+            type="button">
+            <span class="pf-event-name">{{ e.name }}</span>
+            <span class="pf-event-timing">{{ timingLabel(e.daysBefore) }}</span>
+            <span *ngIf="!e.required" class="pf-event-toggle">{{ e.included ? '✓' : '+' }}</span>
+            <span *ngIf="e.required" class="pf-event-badge required-badge">ANCHOR</span>
+          </button>
+        </div>
+        <p class="pf-events-footnote">This is a starting point — your planner can adjust the flow once matched.</p>
+      </div>
+    </div>
+
+    <!-- ══════ STEP 2 — Your Vision ══════ -->
+    <div *ngSwitchCase="2" class="pf-step-content">
+      <p class="pf-step-intro">Pick the vibes that speak to you. Select as many styles as you like — this helps us match the right creative team.</p>
+
+      <div class="pf-style-grid">
+        <button
+          *ngFor="let s of styleOptions"
+          class="pf-style-card"
+          [class.selected]="hasStyle(s.name)"
+          (click)="toggleStyle(s.name)"
+          type="button">
+          <img [src]="s.image" [alt]="s.name" class="pf-style-img" loading="lazy" />
+          <div class="pf-style-overlay">
+            <span class="pf-style-name">{{ s.name }}</span>
+          </div>
+          <span *ngIf="hasStyle(s.name)" class="pf-style-check">✓</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ══════ STEP 3 — Priorities ══════ -->
+    <div *ngSwitchCase="3" class="pf-step-content">
+      <p class="pf-step-intro">What matters most? We'll prioritise these when sourcing vendors.</p>
+
+      <div class="pf-service-grid">
+        <button
+          *ngFor="let svc of serviceOptions"
+          class="pf-service-pill"
+          [class.active]="hasService(svc)"
+          (click)="toggleService(svc)"
+          type="button">
+          {{ svc }}
+        </button>
+      </div>
+
+      <div class="pf-field" style="margin-top: 24px;">
+        <label class="pf-label" for="notes">Anything else we should know?</label>
+        <textarea
+          id="notes"
+          class="pf-textarea"
+          rows="4"
+          placeholder="e.g. my parents want a traditional ceremony but we'd love a modern reception…"
+          [(ngModel)]="form.notes">
+        </textarea>
+      </div>
+    </div>
+
+    <!-- ══════ STEP 4 — Confirm ══════ -->
+    <div *ngSwitchCase="4" class="pf-step-content">
+      <p class="pf-step-intro">Everything look right? Here's a summary of what you've told us.</p>
+
+      <div class="pf-review-card">
+        <div class="pf-review-row" *ngFor="let r of reviewRows">
+          <span class="pf-review-label">{{ r.label }}</span>
+          <span class="pf-review-value">{{ r.value }}</span>
+        </div>
+      </div>
+
+      <div class="pf-field" style="margin-top: 20px;">
+        <label class="pf-label">How did you hear about us?</label>
+        <div class="pf-pill-group">
+          <button
+            *ngFor="let ref of referralOptions"
+            class="pf-pill"
+            [class.active]="form.referral === ref"
+            (click)="form.referral = ref"
+            type="button">
+            {{ ref }}
+          </button>
+        </div>
+      </div>
+
+      <p class="pf-privacy">By submitting, you agree to let ShaadiMe use this information to contact you about wedding planning services. We keep your data private.</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="pf-footer">
+    <button *ngIf="step > 0" class="pf-back-btn" (click)="prevStep()" type="button">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      Back
+    </button>
+    <span *ngIf="step === 0"></span>
+
+    <span class="pf-step-counter">{{ step + 1 }} / {{ TOTAL_STEPS }}</span>
+
+    <button class="pf-next-btn" (click)="nextStep()" type="button">
+      {{ step === TOTAL_STEPS - 1 ? 'Submit' : 'Continue' }}
+      <svg *ngIf="step < TOTAL_STEPS - 1" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+
+  <!-- Bottom ornament -->
+  <div class="pf-ornament-bottom">
+    <span class="pf-ornament-dot">✦</span>
   </div>
 </div>

@@ -1,1 +1,1094 @@
-/* Intentionally empty: component styling is currently handled by global utility classes. */
+/* ═══════════════════════════════════════════════════════════
+   Intake Form — Premium ShaadiMe Brand Styling
+   Plum / Rose / Gold glassmorphic design system
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Custom easings (Emil Kowalski) ────────────────────── */
+/* Strong ease-out for UI interactions */
+/* Strong ease-in-out for on-screen movement */
+
+/* ── CSS Variables (form-scoped) ───────────────────────── */
+:host {
+  --plum: #4b1248;
+  --plum-deep: #2a0b28;
+  --plum-mid: #5c1858;
+  --rose: #b01f68;
+  --rose-light: #d84a82;
+  --coral: #ff5757;
+  --gold: #c9a96e;
+  --gold-light: #dfc28a;
+  --gold-dim: rgba(201, 169, 110, 0.35);
+  --blush: #f8eef1;
+  --cream: #fdfaf9;
+  --white: #ffffff;
+  --text-primary: rgba(255, 255, 255, 0.95);
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-muted: rgba(255, 255, 255, 0.45);
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-border-hover: rgba(255, 255, 255, 0.2);
+  --input-bg: rgba(255, 255, 255, 0.07);
+  --input-border: rgba(255, 255, 255, 0.12);
+  --input-focus: rgba(201, 169, 110, 0.5);
+  --serif: 'Josefin Sans', 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Josefin Sans', 'DM Sans', system-ui, sans-serif;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
+  display: block;
+  width: 100%;
+  max-width: 680px;
+  position: relative;
+  z-index: 1;
+  animation: formSlideUp 0.7s var(--ease-out) 0.15s both;
+}
+
+@keyframes formSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Card ──────────────────────────────────────────────── */
+.pf-card {
+  position: relative;
+  width: 100%;
+  background: rgba(75, 18, 72, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.15),
+    0 24px 64px rgba(42, 11, 40, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* ── Top Ornament ──────────────────────────────────────── */
+.pf-ornament-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--text-muted);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.pf-brand-sm {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+}
+
+.pf-star-sm {
+  font-size: 7px;
+  opacity: 0.3;
+  color: var(--gold);
+}
+
+.pf-brand-tagline {
+  font-family: var(--sans);
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+/* ── Steps Strip ───────────────────────────────────────── */
+.pf-steps-strip {
+  display: flex;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.12);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.pf-steps-strip::-webkit-scrollbar { display: none; }
+
+.pf-step-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 14px 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s var(--ease-out);
+  white-space: nowrap;
+  position: relative;
+  min-width: 0;
+}
+
+.pf-step-btn:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.pf-step-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 16px;
+  right: 16px;
+  height: 2px;
+  background: transparent;
+  border-radius: 2px 2px 0 0;
+  transition: background 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out);
+}
+
+.pf-step-btn.active::after {
+  background: var(--gold);
+  box-shadow: 0 0 12px rgba(201, 169, 110, 0.4);
+}
+
+.pf-step-btn.done::after {
+  background: var(--rose-light);
+  opacity: 0.5;
+}
+
+.pf-step-num {
+  font-size: 10px;
+  font-weight: 600;
+  font-family: var(--sans);
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  transition: color 0.2s var(--ease-out);
+}
+
+.pf-step-btn.active .pf-step-num {
+  color: var(--gold);
+}
+
+.pf-step-btn.done .pf-step-num {
+  color: var(--rose-light);
+}
+
+.pf-step-label {
+  font-size: 11px;
+  font-family: var(--sans);
+  color: var(--text-muted);
+  transition: color 0.2s var(--ease-out);
+}
+
+.pf-step-btn.active .pf-step-label {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.pf-step-btn.done .pf-step-label {
+  color: var(--text-secondary);
+}
+
+/* ── Body ──────────────────────────────────────────────── */
+.pf-body {
+  padding: 32px 32px 24px;
+  min-height: 360px;
+}
+
+@media (max-width: 500px) {
+  .pf-body {
+    padding: 22px 18px 18px;
+  }
+}
+
+.pf-step-content {
+  animation: pfStepIn 0.35s var(--ease-out) both;
+}
+
+@keyframes pfStepIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pf-step-intro {
+  margin: 0 0 26px;
+  font-size: 14.5px;
+  font-family: var(--sans);
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* ── Fields ────────────────────────────────────────────── */
+.pf-field {
+  margin-bottom: 20px;
+}
+
+.pf-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 460px) {
+  .pf-field-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pf-label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--sans);
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.pf-input,
+.pf-textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--input-border);
+  border-radius: 10px;
+  background: var(--input-bg);
+  font-size: 14px;
+  font-family: var(--sans);
+  color: var(--text-primary);
+  transition:
+    border-color 0.2s var(--ease-out),
+    background 0.2s var(--ease-out),
+    box-shadow 0.2s var(--ease-out);
+  box-sizing: border-box;
+  backdrop-filter: blur(8px);
+}
+
+.pf-input:hover,
+.pf-textarea:hover {
+  border-color: var(--glass-border-hover);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.pf-input:focus,
+.pf-textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.15), 0 0 20px rgba(201, 169, 110, 0.08);
+}
+
+.pf-input::placeholder,
+.pf-textarea::placeholder {
+  color: var(--text-muted);
+}
+
+/* Style the date input and select to match */
+.pf-input[type="date"] {
+  color-scheme: dark;
+}
+
+select.pf-input {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(201,169,110,0.7)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+select.pf-input option {
+  background: #3d1039;
+  color: var(--text-primary);
+}
+
+.pf-textarea {
+  resize: vertical;
+  min-height: 88px;
+}
+
+/* ── Pills ─────────────────────────────────────────────── */
+.pf-pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pf-pill {
+  padding: 8px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 13px;
+  font-family: var(--sans);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition:
+    background 0.2s var(--ease-out),
+    border-color 0.2s var(--ease-out),
+    color 0.2s var(--ease-out),
+    transform 0.15s var(--ease-out),
+    box-shadow 0.2s var(--ease-out);
+}
+
+.pf-pill:hover {
+  border-color: rgba(201, 169, 110, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+/* Active press feedback — Emil: buttons must feel responsive */
+.pf-pill:active {
+  transform: scale(0.97);
+}
+
+.pf-pill.active {
+  background: linear-gradient(135deg, var(--rose) 0%, var(--rose-light) 100%);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(176, 31, 104, 0.3);
+}
+
+/* ── Events Preview (Step 1) ───────────────────────────── */
+.pf-events-preview {
+  margin-top: 18px;
+  margin-bottom: 20px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.pf-events-preview-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin: 0 0 10px;
+  font-family: var(--sans);
+}
+
+.pf-events-preview-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.pf-event-preview-pill {
+  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  font-family: var(--sans);
+}
+
+.pf-event-preview-pill.required {
+  background: linear-gradient(135deg, var(--rose) 0%, var(--rose-light) 100%);
+  border-color: transparent;
+  color: #fff;
+}
+
+/* ── Events Section (Step 2) ───────────────────────────── */
+.pf-events-section {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pf-events-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.pf-events-title {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  font-family: var(--sans);
+}
+
+.pf-events-count {
+  font-size: 11px;
+  color: var(--rose-light);
+  font-weight: 500;
+  font-family: var(--sans);
+}
+
+.pf-events-hint {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 0 0 14px;
+  font-family: var(--sans);
+}
+
+.pf-events-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+@media (max-width: 400px) {
+  .pf-events-grid { grid-template-columns: 1fr; }
+}
+
+.pf-event-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    border-color 0.2s var(--ease-out),
+    background 0.2s var(--ease-out),
+    opacity 0.2s var(--ease-out),
+    transform 0.15s var(--ease-out),
+    box-shadow 0.2s var(--ease-out);
+  position: relative;
+  min-height: 68px;
+  font-family: var(--sans);
+}
+
+.pf-event-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.pf-event-card:active {
+  transform: scale(0.98);
+}
+
+.pf-event-card:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.pf-event-card.included {
+  background: rgba(201, 169, 110, 0.1);
+  border-color: rgba(201, 169, 110, 0.3);
+  box-shadow: 0 2px 12px rgba(201, 169, 110, 0.1);
+}
+
+.pf-event-card.excluded {
+  opacity: 0.35;
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.pf-event-card.required {
+  cursor: default;
+  background: linear-gradient(135deg, rgba(176, 31, 104, 0.2), rgba(216, 74, 130, 0.15));
+  border-color: rgba(176, 31, 104, 0.3);
+}
+
+.pf-event-card.required.included {
+  opacity: 1;
+}
+
+.pf-event-name {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-primary);
+  font-family: var(--serif);
+  line-height: 1.2;
+}
+
+.pf-event-card.required .pf-event-name {
+  color: var(--rose-light);
+}
+
+.pf-event-card.excluded .pf-event-name {
+  color: var(--text-muted);
+}
+
+.pf-event-timing {
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+.pf-event-card.required .pf-event-timing {
+  color: rgba(216, 74, 130, 0.6);
+}
+
+.pf-event-toggle {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gold);
+  line-height: 1;
+  transition: transform 0.15s var(--ease-out);
+}
+
+.pf-event-card:hover .pf-event-toggle {
+  transform: scale(1.15);
+}
+
+.pf-event-card.excluded .pf-event-toggle {
+  color: var(--text-muted);
+}
+
+.pf-event-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-family: var(--sans);
+}
+
+.pf-event-badge.required-badge {
+  background: rgba(176, 31, 104, 0.25);
+  color: var(--rose-light);
+}
+
+.pf-events-footnote {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 0;
+  font-style: italic;
+  font-family: var(--sans);
+}
+
+/* ── Budget Slider ─────────────────────────────────────── */
+.pf-budget-display {
+  font-family: var(--serif);
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+  background: linear-gradient(135deg, #fff 0%, var(--gold-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pf-budget-slider-container {
+  position: relative;
+}
+
+.pf-budget-input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  background-image: linear-gradient(90deg, var(--rose), var(--gold));
+  background-size: var(--fill, 0%) 100%;
+  background-repeat: no-repeat;
+}
+
+.pf-budget-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--rose-light), var(--rose));
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 10px rgba(176, 31, 104, 0.4);
+  cursor: pointer;
+  transition: transform 0.15s var(--ease-out), box-shadow 0.15s var(--ease-out);
+}
+
+.pf-budget-input::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 4px 16px rgba(176, 31, 104, 0.5);
+}
+
+.pf-budget-input::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--rose-light), var(--rose));
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 10px rgba(176, 31, 104, 0.4);
+  cursor: pointer;
+}
+
+.pf-budget-ticks {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 10px;
+  color: var(--text-muted);
+  font-family: var(--sans);
+}
+
+/* ── Style Grid (Step 3) ───────────────────────────────── */
+.pf-style-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 500px) {
+  .pf-style-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.pf-style-card {
+  position: relative;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  background: transparent;
+  aspect-ratio: 3 / 4;
+  transition:
+    border-color 0.2s var(--ease-out),
+    transform 0.2s var(--ease-out),
+    box-shadow 0.2s var(--ease-out);
+}
+
+.pf-style-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.25);
+}
+
+/* Active press — Emil: buttons must feel responsive */
+.pf-style-card:active {
+  transform: scale(0.97);
+}
+
+.pf-style-card.selected {
+  border-color: var(--gold);
+  box-shadow:
+    0 0 0 2px rgba(201, 169, 110, 0.3),
+    0 8px 24px rgba(201, 169, 110, 0.2);
+}
+
+.pf-style-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pf-style-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 35%, rgba(42, 11, 40, 0.85) 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 12px;
+}
+
+.pf-style-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: white;
+  font-family: var(--sans);
+  letter-spacing: 0.02em;
+}
+
+.pf-style-check {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--rose), var(--rose-light));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 3px 10px rgba(176, 31, 104, 0.4);
+  animation: checkPop 0.25s var(--ease-out) both;
+}
+
+@keyframes checkPop {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ── Service Pills (Step 4) ────────────────────────────── */
+.pf-service-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pf-service-pill {
+  padding: 10px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 13px;
+  font-family: var(--sans);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition:
+    background 0.2s var(--ease-out),
+    border-color 0.2s var(--ease-out),
+    color 0.2s var(--ease-out),
+    transform 0.15s var(--ease-out),
+    box-shadow 0.2s var(--ease-out);
+}
+
+.pf-service-pill:hover {
+  border-color: rgba(201, 169, 110, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+.pf-service-pill:active {
+  transform: scale(0.97);
+}
+
+.pf-service-pill.active {
+  background: linear-gradient(135deg, var(--rose) 0%, var(--rose-light) 100%);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(176, 31, 104, 0.3);
+}
+
+/* ── Review Card (Step 5) ──────────────────────────────── */
+.pf-review-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.pf-review-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  gap: 12px;
+  transition: background 0.15s ease;
+}
+
+.pf-review-row:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.pf-review-row:last-child {
+  border-bottom: none;
+}
+
+.pf-review-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  font-family: var(--sans);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.pf-review-value {
+  font-size: 13px;
+  color: var(--text-primary);
+  font-family: var(--sans);
+  text-align: right;
+  word-break: break-word;
+}
+
+.pf-privacy {
+  margin-top: 18px;
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  font-family: var(--sans);
+}
+
+/* ── Footer ────────────────────────────────────────────── */
+.pf-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.12);
+}
+
+@media (max-width: 500px) {
+  .pf-footer { padding: 14px 18px; }
+}
+
+.pf-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 13px;
+  font-family: var(--sans);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition:
+    border-color 0.2s var(--ease-out),
+    color 0.2s var(--ease-out),
+    background 0.2s var(--ease-out),
+    transform 0.15s var(--ease-out);
+}
+
+.pf-back-btn:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.pf-back-btn:active {
+  transform: scale(0.97);
+}
+
+.pf-step-counter {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: var(--sans);
+  letter-spacing: 0.05em;
+}
+
+.pf-next-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--rose) 0%, var(--rose-light) 100%);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--sans);
+  cursor: pointer;
+  transition:
+    transform 0.15s var(--ease-out),
+    box-shadow 0.2s var(--ease-out);
+  letter-spacing: 0.02em;
+  box-shadow: 0 6px 20px rgba(176, 31, 104, 0.35);
+}
+
+.pf-next-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(176, 31, 104, 0.45);
+}
+
+/* Emil: buttons must feel responsive to press */
+.pf-next-btn:active {
+  transform: scale(0.97);
+}
+
+/* ── Bottom Ornament ───────────────────────────────────── */
+.pf-ornament-bottom {
+  display: flex;
+  justify-content: center;
+  padding: 12px 0;
+  background: rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.pf-ornament-dot {
+  font-size: 10px;
+  color: var(--gold);
+  opacity: 0.35;
+}
+
+/* ── Success State ─────────────────────────────────────── */
+.pf-success {
+  width: 100%;
+  max-width: 680px;
+  position: relative;
+  z-index: 1;
+}
+
+.pf-success-card {
+  background: rgba(75, 18, 72, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 52px 40px;
+  text-align: center;
+  animation: pfStepIn 0.45s var(--ease-out) both;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.15),
+    0 24px 64px rgba(42, 11, 40, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 500px) {
+  .pf-success-card { padding: 36px 22px; }
+}
+
+.pf-success-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(176, 31, 104, 0.2), rgba(216, 74, 130, 0.15));
+  color: var(--rose-light);
+  border: 1px solid rgba(216, 74, 130, 0.25);
+}
+
+.pf-success-icon svg {
+  width: 30px;
+  height: 30px;
+}
+
+.pf-success-title {
+  margin: 0 0 14px;
+  font-family: var(--serif);
+  font-size: 1.9rem;
+  font-weight: 500;
+  color: var(--white);
+  letter-spacing: -0.02em;
+}
+
+.pf-success-msg {
+  margin: 0 0 28px;
+  font-family: var(--sans);
+  font-size: 14.5px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.pf-success-msg strong {
+  color: var(--gold);
+}
+
+.pf-success-divider {
+  width: 48px;
+  height: 1px;
+  margin: 0 auto 22px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+}
+
+.pf-success-summary {
+  text-align: left;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+
+.pf-summ-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 11px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  gap: 12px;
+}
+
+.pf-summ-row:last-child {
+  border-bottom: none;
+}
+
+.pf-summ-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  font-family: var(--sans);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.pf-summ-value {
+  font-size: 13px;
+  color: var(--text-primary);
+  font-family: var(--sans);
+  text-align: right;
+  word-break: break-word;
+}
+
+.pf-success-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 36px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--rose) 0%, var(--rose-light) 100%);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--sans);
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    transform 0.15s var(--ease-out),
+    box-shadow 0.2s var(--ease-out);
+  letter-spacing: 0.02em;
+  box-shadow: 0 6px 20px rgba(176, 31, 104, 0.35);
+}
+
+.pf-success-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(176, 31, 104, 0.45);
+}
+
+.pf-success-btn:active {
+  transform: scale(0.97);
+}
+
+/* ── Reduced motion ────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  :host,
+  .pf-step-content,
+  .pf-success-card,
+  .pf-style-check {
+    animation-duration: 0.01ms !important;
+  }
+
+  .pf-pill,
+  .pf-service-pill,
+  .pf-style-card,
+  .pf-event-card,
+  .pf-next-btn,
+  .pf-back-btn {
+    transition-duration: 0.01ms !important;
+  }
+}

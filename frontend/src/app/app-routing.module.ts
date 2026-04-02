@@ -10,6 +10,7 @@ import { DestinationsComponent } from './pages/destinations/destinations.compone
 import { AboutComponent } from './pages/about/about.component';
 import { PressComponent } from './pages/press/press.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { PlanPageComponent } from './pages/plan/plan.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,7 @@ const routes: Routes = [
       { path: 'about', component: AboutComponent },
       { path: 'press', component: PressComponent },
       { path: 'contact', component: ContactComponent },
+      { path: 'plan', component: PlanPageComponent },
       { path: '**', redirectTo: '' }
     ]
   }

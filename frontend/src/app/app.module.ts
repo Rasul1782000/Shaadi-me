@@ -18,6 +18,7 @@ import { DestinationsComponent } from './pages/destinations/destinations.compone
 import { AboutComponent } from './pages/about/about.component';
 import { PressComponent } from './pages/press/press.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { PlanPageComponent } from './pages/plan/plan.component';
 
 // Components
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -29,7 +30,6 @@ import { HeroComponent } from './components/landing-page/hero/hero.component';
 import { ThemesComponent } from './components/landing-page/themes/themes.component';
 import { CitiesComponent } from './components/landing-page/cities/cities.component';
 import { VenuesComponent as LandingVenuesComponent } from './components/landing-page/venues/venues.component';
-import { WhyComponent } from './components/landing-page/why/why.component';
 import { DecorComponent } from './components/landing-page/decor/decor.component';
 import { FaqComponent } from './components/landing-page/faq/faq.component';
 
@@ -45,6 +45,7 @@ import { FaqComponent } from './components/landing-page/faq/faq.component';
     AboutComponent,
     PressComponent,
     ContactComponent,
+    PlanPageComponent,
     NavbarComponent,
     FooterComponent,
     IntakeFormComponent,
@@ -52,7 +53,6 @@ import { FaqComponent } from './components/landing-page/faq/faq.component';
     ThemesComponent,
     CitiesComponent,
     LandingVenuesComponent,
-    WhyComponent,
     DecorComponent,
     FaqComponent
   ],

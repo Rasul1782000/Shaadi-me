@@ -1,3 +1,4 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { HomeComponent } from './home.component';
@@ -6,7 +7,8 @@ import { LeadService } from '../../services/lead.service';
 describe('HomeComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HomeComponent],
+      declarations: [HomeComponent],
+      schemas: [NO_ERRORS_SCHEMA],
       providers: [
         {
           provide: LeadService,
@@ -27,7 +29,6 @@ describe('HomeComponent', () => {
     expect(element.querySelector('app-cities')).toBeTruthy();
     expect(element.querySelector('app-decor')).toBeTruthy();
     expect(element.querySelector('app-themes')).toBeTruthy();
-    expect(element.querySelector('app-why')).toBeFalsy();
     expect(element.querySelector('app-venues')).toBeTruthy();
     expect(element.querySelector('app-faq')).toBeTruthy();
   });
