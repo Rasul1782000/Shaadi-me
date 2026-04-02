@@ -26,29 +26,12 @@
 <!-- ─── FORM CARD ─── -->
 <div *ngIf="!submitted" class="pf-card">
 
-  <!-- Top ornament -->
-  <div class="pf-ornament-top">
-    <span class="pf-brand-sm">ShaadiMe</span>
-    <span class="pf-star-sm">✦</span>
-    <span class="pf-brand-tagline">Planning Your Celebration</span>
-  </div>
-
-  <!-- Step progress -->
-  <div class="pf-steps-strip">
-    <button
-      *ngFor="let s of stepLabels; let i = index"
-      class="pf-step-btn"
-      [class.active]="step === i"
-      [class.done]="step > i"
-      (click)="jumpTo(i)"
-      type="button">
-      <span class="pf-step-num">{{ s.num }}</span>
-      <span class="pf-step-label">{{ s.label }}</span>
-    </button>
-  </div>
-
   <!-- Body -->
   <div class="pf-body" [ngSwitch]="step">
+    <div class="pf-editorial-step">
+      <span class="pf-ed-num">0{{ step + 1 }}</span>
+      <span class="pf-ed-label"> / {{ stepLabels[step].label }}</span>
+    </div>
 
     <!-- ══════ STEP 0  — The Couple ══════ -->
     <div *ngSwitchCase="0" class="pf-step-content">
@@ -289,10 +272,5 @@
       {{ step === TOTAL_STEPS - 1 ? 'Submit' : 'Continue' }}
       <svg *ngIf="step < TOTAL_STEPS - 1" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
     </button>
-  </div>
-
-  <!-- Bottom ornament -->
-  <div class="pf-ornament-bottom">
-    <span class="pf-ornament-dot">✦</span>
   </div>
 </div>

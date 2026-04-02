@@ -63,133 +63,34 @@
 .pf-card {
   position: relative;
   width: 100%;
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.04),
-    0 8px 30px var(--card-shadow),
-    0 24px 60px rgba(107, 29, 58, 0.04);
 }
 
-/* ── Top Ornament ──────────────────────────────────────── */
-.pf-ornament-top {
+/* ── Editorial Step ──────────────────────────────────────── */
+.pf-editorial-step {
+  margin-bottom: 32px;
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 8px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 11px 16px;
-  background: #4b1248;
-  color: rgba(255, 255, 255, 0.55);
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  align-items: baseline;
+  animation: pfStepIn 0.35s var(--ease-out) both;
 }
 
-.pf-brand-sm {
+.pf-ed-num {
   font-family: var(--serif);
+  font-size: 24px;
   font-weight: 600;
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  color: var(--gold-shimmer);
-}
-
-.pf-star-sm {
-  font-size: 7px;
-  opacity: 0.4;
-  color: var(--gold-shimmer);
-}
-
-.pf-brand-tagline {
-  font-family: var(--sans);
-  color: rgba(255, 255, 255, 0.5);
-}
-
-/* ── Steps Strip ───────────────────────────────────────── */
-.pf-steps-strip {
-  display: flex;
-  border-bottom: 1px solid var(--champagne);
-  background: linear-gradient(180deg, #FAF4EE 0%, var(--cream) 100%);
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-.pf-steps-strip::-webkit-scrollbar { display: none; }
-
-.pf-step-btn {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-  padding: 14px 8px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  transition: background 0.2s var(--ease-out);
-  white-space: nowrap;
-  position: relative;
-  min-width: 0;
-}
-
-.pf-step-btn:hover {
-  background: rgba(184, 149, 106, 0.06);
-}
-
-.pf-step-btn::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 20%;
-  right: 20%;
-  height: 2px;
-  background: transparent;
-  border-radius: 2px 2px 0 0;
-  transition: background 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out);
-}
-
-.pf-step-btn.active::after {
-  background: var(--burgundy);
-  box-shadow: 0 1px 6px rgba(107, 29, 58, 0.2);
-}
-
-.pf-step-btn.done::after {
-  background: var(--gold);
-  opacity: 0.6;
-}
-
-.pf-step-num {
-  font-size: 10px;
-  font-weight: 700;
-  font-family: var(--sans);
-  color: var(--text-muted);
-  letter-spacing: 0.06em;
-  transition: color 0.2s var(--ease-out);
-}
-
-.pf-step-btn.active .pf-step-num {
   color: var(--burgundy);
+  letter-spacing: 0.05em;
 }
 
-.pf-step-btn.done .pf-step-num {
-  color: var(--gold);
-}
-
-.pf-step-label {
-  font-size: 11px;
+.pf-ed-label {
   font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
   color: var(--text-muted);
-  transition: color 0.2s var(--ease-out);
-}
-
-.pf-step-btn.active .pf-step-label {
-  color: var(--text-primary);
-  font-weight: 600;
-}
-
-.pf-step-btn.done .pf-step-label {
-  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-left: 12px;
 }
 
 /* ── Body ──────────────────────────────────────────────── */
@@ -264,51 +165,53 @@
 
 .pf-label {
   display: block;
-  margin-bottom: 7px;
-  font-size: 11px;
+  margin-bottom: 8px;
+  font-size: 12px;
   font-weight: 700;
   font-family: var(--sans);
-  color: var(--burgundy-soft);
+  color: var(--burgundy);
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.15em;
+  opacity: 0.8;
 }
 
 .pf-input,
 .pf-textarea {
   width: 100%;
-  padding: 13px 16px;
-  border: 1px solid var(--input-border);
-  border-radius: 10px;
-  background: var(--input-bg);
-  font-size: 14.5px;
-  font-family: var(--sans);
+  padding: 8px 0 12px;
+  border: none;
+  border-bottom: 2px solid rgba(138, 115, 96, 0.25);
+  border-radius: 0;
+  background: transparent;
+  font-size: 26px;
+  font-family: var(--serif);
   color: var(--text-primary);
   transition:
-    border-color 0.2s var(--ease-out),
-    background 0.2s var(--ease-out),
-    box-shadow 0.2s var(--ease-out);
+    border-color 0.3s var(--ease-out),
+    color 0.3s var(--ease-out);
   box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .pf-input, .pf-textarea { font-size: 20px; }
 }
 
 .pf-input:hover,
 .pf-textarea:hover {
-  border-color: var(--warm-grey);
-  background: #fff;
+  border-bottom-color: rgba(138, 115, 96, 0.6);
 }
 
 .pf-input:focus,
 .pf-textarea:focus {
   outline: none;
-  border-color: var(--gold);
-  background: #fff;
-  box-shadow:
-    0 0 0 3px rgba(184, 149, 106, 0.12),
-    0 2px 8px rgba(184, 149, 106, 0.08);
+  border-bottom-color: var(--burgundy);
+  color: var(--burgundy);
 }
 
 .pf-input::placeholder,
 .pf-textarea::placeholder {
-  color: var(--taupe);
+  color: rgba(44, 26, 32, 0.25);
+  font-style: italic;
 }
 
 select.pf-input {
@@ -665,7 +568,7 @@ select.pf-input option {
   position: relative;
   padding: 0;
   border: 2px solid transparent;
-  border-radius: 16px;
+  border-radius: 0;
   overflow: hidden;
   cursor: pointer;
   background: var(--champagne);
@@ -750,11 +653,11 @@ select.pf-input option {
 }
 
 .pf-service-pill {
-  padding: 12px 24px;
+  padding: 14px 20px;
   border: 1px solid var(--linen);
-  border-radius: 12px;
-  background: var(--cream-mid);
-  font-size: 14px;
+  border-radius: 0;
+  background: transparent;
+  font-size: 13.5px;
   font-family: var(--sans);
   color: var(--text-body);
   cursor: pointer;
@@ -764,6 +667,7 @@ select.pf-input option {
     color 0.2s var(--ease-out),
     transform 0.15s var(--ease-out),
     box-shadow 0.2s var(--ease-out);
+  text-align: center;
 }
 
 .pf-service-pill:hover {
@@ -842,9 +746,8 @@ select.pf-input option {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 36px;
-  border-top: 1px solid var(--champagne);
-  background: linear-gradient(180deg, var(--cream) 0%, var(--cream-mid) 100%);
+  padding: 32px 0 0;
+  margin-top: 24px;
 }
 
 @media (max-width: 500px) {
@@ -857,8 +760,8 @@ select.pf-input option {
   gap: 6px;
   padding: 10px 20px;
   border: 1px solid var(--linen);
-  border-radius: 10px;
-  background: var(--cream);
+  border-radius: 0;
+  background: transparent;
   font-size: 13px;
   font-family: var(--sans);
   color: var(--text-body);
@@ -873,11 +776,10 @@ select.pf-input option {
 .pf-back-btn:hover {
   border-color: var(--warm-grey);
   color: var(--text-primary);
-  background: var(--champagne);
 }
 
 .pf-back-btn:active {
-  transform: scale(0.97);
+  transform: translateY(1px);
 }
 
 .pf-step-counter {
@@ -892,45 +794,30 @@ select.pf-input option {
   align-items: center;
   gap: 8px;
   padding: 12px 30px;
-  border: none;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #b01f68 0%, #d84a82 100%);
-  color: #fff;
+  border: 1px solid var(--burgundy);
+  border-radius: 0;
+  background: transparent;
+  color: var(--burgundy);
   font-size: 13.5px;
-  font-weight: 600;
+  font-weight: 500;
   font-family: var(--sans);
   cursor: pointer;
   transition:
     transform 0.15s var(--ease-out),
     box-shadow 0.2s var(--ease-out),
-    opacity 0.2s var(--ease-out);
-  letter-spacing: 0.02em;
-  box-shadow: 0 8px 24px rgba(176, 31, 104, 0.22);
+    color 0.2s var(--ease-out),
+    background 0.2s var(--ease-out);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .pf-next-btn:hover {
-  opacity: 0.92;
-  transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(176, 31, 104, 0.35);
+  background: var(--burgundy);
+  color: #fff;
 }
 
 .pf-next-btn:active {
-  transform: scale(0.97);
-}
-
-/* ── Bottom Ornament ───────────────────────────────────── */
-.pf-ornament-bottom {
-  display: flex;
-  justify-content: center;
-  padding: 10px 0;
-  background: #4b1248;
-  border-top: none;
-}
-
-.pf-ornament-dot {
-  font-size: 10px;
-  color: var(--gold);
-  opacity: 0.5;
+  transform: translateY(1px);
 }
 
 /* ── Success State ─────────────────────────────────────── */
@@ -942,16 +829,13 @@ select.pf-input option {
 }
 
 .pf-success-card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 16px;
+  background: transparent;
+  border: 1px solid var(--linen);
+  border-radius: 0;
   padding: 52px 40px;
   text-align: center;
   animation: pfStepIn 0.45s var(--ease-out) both;
-  box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.04),
-    0 8px 30px var(--card-shadow),
-    0 24px 60px rgba(107, 29, 58, 0.04);
+  box-shadow: none;
 }
 
 @media (max-width: 500px) {
