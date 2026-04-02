@@ -87,8 +87,9 @@
 }
 
 .plan-title em {
-  color: #b01f68;
+  color: #d35a94;
   font-style: italic;
+  display: inline-block;
 }
 
 .plan-subtitle {

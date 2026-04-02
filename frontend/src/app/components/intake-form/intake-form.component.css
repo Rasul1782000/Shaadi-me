@@ -44,7 +44,10 @@
   --sans: 'DM Sans', 'Josefin Sans', system-ui, -apple-system, sans-serif;
 
   /* Motion */
+  /* Emil Design Engineering strong easing vectors */
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 
   display: block;
   width: 100%;
@@ -65,32 +68,31 @@
   width: 100%;
 }
 
-/* ── Editorial Step ──────────────────────────────────────── */
+/* ── Form Navigation (Editorial) ────────────────────────── */
 .pf-editorial-step {
-  margin-bottom: 32px;
-  border-bottom: 2px solid var(--gold);
-  padding-bottom: 8px;
+  margin-bottom: 48px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--linen);
   display: flex;
   align-items: baseline;
-  animation: pfStepIn 0.35s var(--ease-out) both;
+  gap: 16px;
 }
 
 .pf-ed-num {
+  font-size: 42px;
   font-family: var(--serif);
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--burgundy);
-  letter-spacing: 0.05em;
+  color: var(--purple);
+  line-height: 1;
 }
 
 .pf-ed-label {
+  font-size: 16px;
+  font-weight: 700;
   font-family: var(--sans);
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-muted);
+  letter-spacing: 0.2em;
+  color: #d35a94;
+  opacity: 0.9;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-left: 12px;
 }
 
 /* ── Body ──────────────────────────────────────────────── */
@@ -110,8 +112,8 @@
 }
 
 @keyframes pfStepIn {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(16px) scale(0.98); filter: blur(4px); }
+  to   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0px); }
 }
 
 /* Staggered entrance for fields within step */
@@ -126,8 +128,8 @@
 }
 
 @keyframes pfFieldIn {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(12px) scale(0.98); filter: blur(4px); }
+  to   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0px); }
 }
 
 .pf-step-content > *:nth-child(1) { animation-delay: 0.05s; }
@@ -209,7 +211,9 @@
 }
 
 .pf-input::placeholder,
-.pf-textarea::placeholder {
+.pf-textarea::placeholder,
+.pf-input.is-placeholder,
+.pf-textarea.is-placeholder {
   color: rgba(44, 26, 32, 0.25);
   font-style: italic;
 }
@@ -779,7 +783,7 @@ select.pf-input option {
 }
 
 .pf-back-btn:active {
-  transform: translateY(1px);
+  transform: scale(0.97);
 }
 
 .pf-step-counter {
@@ -817,7 +821,7 @@ select.pf-input option {
 }
 
 .pf-next-btn:active {
-  transform: translateY(1px);
+  transform: scale(0.97);
 }
 
 /* ── Success State ─────────────────────────────────────── */

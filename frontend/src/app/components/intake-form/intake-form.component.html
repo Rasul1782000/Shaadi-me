@@ -114,11 +114,12 @@
         <div class="pf-field">
           <label class="pf-label" for="wdate">Wedding Date</label>
           <input id="wdate" class="pf-input" type="date" [min]="minDate"
+                 [class.is-placeholder]="!form.weddingDate"
                  [(ngModel)]="form.weddingDate" />
         </div>
         <div class="pf-field">
           <label class="pf-label">Guest Count</label>
-          <select class="pf-input" [(ngModel)]="form.guests">
+          <select class="pf-input" [(ngModel)]="form.guests" [class.is-placeholder]="!form.guests">
             <option value="">Select range</option>
             <option *ngFor="let g of guestOptions" [value]="g">{{ g }}</option>
           </select>
@@ -127,7 +128,7 @@
 
       <div class="pf-field">
         <label class="pf-label">Venue Preference</label>
-        <select class="pf-input" [(ngModel)]="form.venueType">
+        <select class="pf-input" [(ngModel)]="form.venueType" [class.is-placeholder]="!form.venueType">
           <option value="">Select venue type</option>
           <option *ngFor="let v of venueOptions" [value]="v">{{ v }}</option>
         </select>
