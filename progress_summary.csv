@@ -1,0 +1,4 @@
+Date,Title,Description,Links for inspection
+"2026-03-31","fixed navbar footer and hero section","Navbar and footer fixes; completed the hero section enhancements to significantly improve the desktop feel (moving away from the mobile-native feel).","https://github.com/Rasula228/Shaadi-me/commit/6b6713887a22912814230fd52cb4405b8d155959"
+"2026-03-31","fixed layout issues","Start of the redesign of the website from feeling too mobile-native to a proper desktop feel.","https://github.com/Rasula228/Shaadi-me/commit/843b35d800adb5ec3b70d5af340e1ade9f5f8608"
+"2026-03-30","using module format","Change of the folder structure and architectural updates converting the application to use the module format.","https://github.com/Rasula228/Shaadi-me/commit/da7d328aa820681d74dba0a2ea0161b6aff20ff2"
