@@ -15,7 +15,7 @@ import { HeroSlide } from '../landing.types';
   selector: 'app-hero',
   standalone: false,
   templateUrl: './hero.component.html',
-  styleUrl: './hero.component.css'
+  styleUrl: './hero.component.scss'
 })
 export class HeroComponent implements AfterViewInit, OnDestroy {
   @Input({ required: true }) slides: HeroSlide[] = [];

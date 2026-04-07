@@ -235,7 +235,7 @@ function timingLabel(daysBefore: number): string {
   selector: 'app-intake-form',
   standalone: false,
   templateUrl: './intake-form.component.html',
-  styleUrl: './intake-form.component.css'
+  styleUrl: './intake-form.component.scss'
 })
 export class IntakeFormComponent {
   // Expose to template

@@ -5,7 +5,7 @@ import { PlannerUiService } from '../../services/planner-ui.service';
   selector: 'app-navbar',
   standalone: false,
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+  styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
   isMenuOpen = false;

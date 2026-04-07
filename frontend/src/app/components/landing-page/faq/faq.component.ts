@@ -5,7 +5,7 @@ import { FaqItem } from '../landing.types';
   selector: 'app-faq',
   standalone: false,
   templateUrl: './faq.component.html',
-  styleUrl: './faq.component.css'
+  styleUrl: './faq.component.scss'
 })
 export class FaqComponent {
   @Input({ required: true }) items: FaqItem[] = [];

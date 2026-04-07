@@ -4,6 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-weddings',
   standalone: false,
   templateUrl: './weddings.component.html',
-  styleUrl: './weddings.component.css'
+  styleUrl: './weddings.component.scss'
 })
 export class WeddingsComponent {}

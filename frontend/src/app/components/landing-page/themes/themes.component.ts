@@ -5,7 +5,7 @@ import { ThemeCard } from '../landing.types';
   selector: 'app-themes',
   standalone: false,
   templateUrl: './themes.component.html',
-  styleUrl: './themes.component.css'
+  styleUrl: './themes.component.scss'
 })
 export class ThemesComponent {
   @Input({ required: true }) themes: ThemeCard[] = [];

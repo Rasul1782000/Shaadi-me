@@ -5,7 +5,7 @@ import { VenueCard } from '../landing.types';
   selector: 'app-venues',
   standalone: false,
   templateUrl: './venues.component.html',
-  styleUrl: './venues.component.css'
+  styleUrl: './venues.component.scss'
 })
 export class VenuesComponent {
   @Input({ required: true }) venues: VenueCard[] = [];

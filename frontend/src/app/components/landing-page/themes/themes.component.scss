@@ -372,7 +372,7 @@
   }
 
   .section-inner {
-    padding: 0 14px;
+    padding: 0 24px;
   }
 
   .section-header {
@@ -400,7 +400,7 @@
 
   .theme-card,
   .theme-card.is-featured {
-    grid-column: auto;
+    grid-column: auto !important;
     min-height: 260px;
     aspect-ratio: 1.18;
   }

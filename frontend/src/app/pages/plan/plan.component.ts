@@ -4,6 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-plan',
   standalone: false,
   templateUrl: './plan.component.html',
-  styleUrl: './plan.component.css'
-})
-export class PlanPageComponent {}
+  styleUrl: './plan.component.scss'
+  })
+  export class PlanPageComponent {}

@@ -13,7 +13,7 @@ import {
   selector: 'app-home',
   standalone: false,
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.scss'
 })
 export class HomeComponent {
   heroSlides: HeroSlide[] = [
@@ -38,7 +38,7 @@ export class HomeComponent {
 
   themes: ThemeCard[] = [
     { name: 'Royal Grandeur', description: 'Grand entrances, regal details, and a sense of occasion in every frame.', priceRange: '₹15L–30L', image: 'https://images.pexels.com/photos/2306281/pexels-photo-2306281.jpeg?auto=compress&cs=tinysrgb&w=1200', objectPosition: 'center 35%', featured: true },
-    { name: 'Intimate Garden', description: 'Soft florals, easy light, and a celebration that feels close to home.', priceRange: '₹5L–12L', image: 'https://images.pexels.com/photos/35985252/pexels-photo-35985252.jpeg?auto=compress&cs=tinysrgb&w=1200', objectPosition: 'center 52%' },
+    { name: 'Intimate Garden', description: 'Soft florals, easy light, and a celebration that feels close to home.', priceRange: '₹5L–12L', image: 'https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=1200', objectPosition: 'center 52%' },
     { name: 'Traditional South Indian', description: 'Sacred rituals, marigold warmth, and timeless South Indian elegance.', priceRange: '₹8L–20L', image: 'https://images.pexels.com/photos/7669989/pexels-photo-7669989.jpeg?auto=compress&cs=tinysrgb&w=1200', objectPosition: 'center 56%' },
     { name: 'Destination', description: 'A wedding that feels like a getaway, without the planning chaos.', priceRange: '₹20L–50L', image: 'https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=1200', objectPosition: 'center 54%' },
     { name: 'Minimalist Modern', description: 'Refined palettes, considered details, and understated luxury.', priceRange: '₹6L–15L', image: 'https://images.pexels.com/photos/1035665/pexels-photo-1035665.jpeg?auto=compress&cs=tinysrgb&w=1200', objectPosition: 'center 50%' }

@@ -5,7 +5,7 @@ import { DecorStyleCard } from '../landing.types';
   selector: 'app-decor',
   standalone: false,
   templateUrl: './decor.component.html',
-  styleUrl: './decor.component.css'
+  styleUrl: './decor.component.scss'
 })
 export class DecorComponent {
   @Input({ required: true }) styles: DecorStyleCard[] = [];

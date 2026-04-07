@@ -5,7 +5,7 @@ import { CityCard } from '../landing.types';
   selector: 'app-cities',
   standalone: false,
   templateUrl: './cities.component.html',
-  styleUrl: './cities.component.css'
+  styleUrl: './cities.component.scss'
 })
 export class CitiesComponent {
   @Input({ required: true }) cities: CityCard[] = [];

@@ -218,7 +218,7 @@ p-toolbar {
 
 @media (max-width: 640px) {
   .landing-container {
-    width: min(calc(100% - 1rem), var(--landing-width));
+    width: min(calc(100% - 2.5rem), var(--landing-width));
   }
 
   .landing-section {

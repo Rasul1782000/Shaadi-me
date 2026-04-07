@@ -4,6 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-destinations',
   standalone: false,
   templateUrl: './destinations.component.html',
-  styleUrl: './destinations.component.css'
+  styleUrl: './destinations.component.scss'
 })
 export class DestinationsComponent {}
