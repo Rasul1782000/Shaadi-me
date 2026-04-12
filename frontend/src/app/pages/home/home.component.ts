@@ -16,6 +16,17 @@ import {
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+  showForm = false;
+  openFaq: number | null = null;
+  destinations = [
+    { name: 'Bali', image: 'https://images.unsplash.com/photo-1544124499-58912cbddaad?auto=format&fit=crop&q=80&w=800' },
+    { name: 'Goa', image: 'https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?auto=format&fit=crop&q=80&w=800' },
+    { name: 'Tuscany', image: 'https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?auto=format&fit=crop&q=80&w=800' }
+  ];
+
+  toggleFaq(index: number): void {
+    this.openFaq = this.openFaq === index ? null : index;
+  }
   heroSlides: HeroSlide[] = [
     { id: '01', label: 'Royal Grandeur', meta: 'Hyderabad • ShaadiMe Edit', video: '/landing-videos/landing-1.mp4' },
     { id: '02', label: 'Garden Wedding', meta: 'Bengaluru • Open Air', video: '/landing-videos/landing-2.mp4' },

@@ -1,6 +1,7 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CardModule } from 'primeng/card';
@@ -12,7 +13,7 @@ import { MainLayoutComponent } from './layouts/main-layout/main-layout.component
 // Pages
 import { HomeComponent } from './pages/home/home.component';
 import { WeddingsComponent } from './pages/weddings/weddings.component';
-import { PageVenuesComponent } from './pages/venues/venues.component';
+import { PageVenuesComponent } from './pages/venues/PageVenuesComponent';
 import { ServicesComponent } from './pages/services/services.component';
 import { DestinationsComponent } from './pages/destinations/destinations.component';
 import { AboutComponent } from './pages/about/about.component';
@@ -61,11 +62,13 @@ import { WhyShaadiMeComponent } from './components/landing-page/why-shaadime/why
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule,
     CommonModule,
     FormsModule,
     CardModule,
     DividerModule
   ],
+  schemas: [NO_ERRORS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent] // Trigger rebuild
 })

@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { HomeComponent } from './pages/home/home.component';
 import { WeddingsComponent } from './pages/weddings/weddings.component';
-import { PageVenuesComponent } from './pages/venues/venues.component';
+import { PageVenuesComponent } from './pages/venues/PageVenuesComponent';
 import { ServicesComponent } from './pages/services/services.component';
 import { DestinationsComponent } from './pages/destinations/destinations.component';
 import { AboutComponent } from './pages/about/about.component';
