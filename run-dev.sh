@@ -77,7 +77,7 @@ BACKEND_PID=$!
 echo "Starting Angular on http://$FRONTEND_HOST:$FRONTEND_PORT"
 (
   cd "$FRONTEND_DIR"
-  npm run start -- --port "$FRONTEND_PORT" --host "$FRONTEND_HOST" --proxy-config proxy.conf.json
+  npm run start -- --port "$FRONTEND_PORT" --host "$FRONTEND_HOST"
 ) &
 FRONTEND_PID=$!
 
