@@ -7,7 +7,7 @@
     radial-gradient(circle at top right, rgba(255, 180, 190, 0.14), transparent 22%),
     linear-gradient(180deg, #3f123f 0%, #260a24 100%);
   color: var(--white);
-  padding: 5rem 0 2rem;
+  padding: 6.5rem 0 3.5rem;
 }
 
 .footer-top {
@@ -15,6 +15,7 @@
   flex-direction: column;
   gap: 1.5rem;
   align-items: flex-start;
+  padding-bottom: 2rem;
 }
 
 .footer-logo {
@@ -32,8 +33,8 @@
 
 .footer-grid {
   display: grid;
-  gap: 2rem;
-  padding: 1rem 0 3rem;
+  gap: 3rem;
+  padding: 3.5rem 0 4.5rem;
 }
 
 .footer-grid h4 {
@@ -63,7 +64,7 @@
 }
 
 .footer-grid li + li {
-  margin-top: 0.9rem;
+  margin-top: 1.25rem;
 }
 
 .footer-socials {
@@ -122,6 +123,7 @@
   }
 
   .footer-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: 2fr 2fr 2fr 2.5fr;
+    gap: 4rem;
   }
 }

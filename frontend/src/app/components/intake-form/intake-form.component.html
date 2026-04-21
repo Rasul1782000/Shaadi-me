@@ -52,14 +52,9 @@
 
   <!-- Body -->
   <div class="pf-body" [ngSwitch]="step">
-    <div class="pf-editorial-step">
-      <span class="pf-ed-num">0{{ step + 1 }}</span>
-      <span class="pf-ed-label"> / {{ stepLabels[step].label }}</span>
-    </div>
 
     <!-- ══════ STEP 0  — The Couple ══════ -->
     <div *ngSwitchCase="0" class="pf-step-content">
-      <p class="pf-step-intro">Let's start with the two of you. We'll use this to personalise everything ahead.</p>
 
       <div class="pf-field-row">
         <div class="pf-field">
@@ -132,7 +127,6 @@
 
     <!-- ══════ STEP 1 — The Day ══════ -->
     <div *ngSwitchCase="1" class="pf-step-content">
-      <p class="pf-step-intro">Key details about the wedding day itself — dates, scale, and budget.</p>
 
       <div class="pf-field-row">
         <div class="pf-field">
@@ -209,7 +203,6 @@
 
     <!-- ══════ STEP 2 — Your Vision ══════ -->
     <div *ngSwitchCase="2" class="pf-step-content">
-      <p class="pf-step-intro">Pick the vibes that speak to you. Select as many styles as you like — this helps us match the right creative team.</p>
 
       <div class="pf-style-grid">
         <button
@@ -229,7 +222,6 @@
 
     <!-- ══════ STEP 3 — Priorities ══════ -->
     <div *ngSwitchCase="3" class="pf-step-content">
-      <p class="pf-step-intro">What matters most? We'll prioritise these when sourcing vendors.</p>
 
       <div class="pf-service-grid">
         <button
@@ -256,7 +248,6 @@
 
     <!-- ══════ STEP 4 — Confirm ══════ -->
     <div *ngSwitchCase="4" class="pf-step-content">
-      <p class="pf-step-intro">Everything look right? Here's a summary of what you've told us.</p>
 
       <div class="pf-review-card">
         <div class="pf-review-row" *ngFor="let r of reviewRows">
