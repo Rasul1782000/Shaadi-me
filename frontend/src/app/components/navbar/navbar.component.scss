@@ -45,6 +45,12 @@
   align-items: center;
   gap: 2rem;
   padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.nav-links li {
+  display: inline-flex;
 }
 
 .nav-links a {

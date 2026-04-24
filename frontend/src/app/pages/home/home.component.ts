@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SeoService } from '../../services/seo.service';
 import {
   CityCard,
   DecorStyleCard,
@@ -15,7 +16,7 @@ import {
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   heroSlides: HeroSlide[] = [
     { id: '01', label: 'Royal Grandeur', meta: 'Hyderabad • ShaadiMe Edit', video: '/landing-videos/landing-1.mp4' },
     { id: '02', label: 'Garden Wedding', meta: 'Bengaluru • Open Air', video: '/landing-videos/landing-2.mp4' },
@@ -76,7 +77,60 @@ export class HomeComponent {
     { q: 'Do you work with destination weddings?', a: 'Yes, destination-style celebrations are part of the worlds we can help shape, whether they are within India or in a getaway setting.' }
   ];
 
-  constructor(private readonly router: Router) { }
+  constructor(
+    private readonly router: Router,
+    private readonly seo: SeoService
+  ) {}
+
+  ngOnInit(): void {
+    this.seo.update({
+      title: 'ShaadiMe — Premium Wedding Planning in Hyderabad, Bengaluru & Chennai',
+      description: 'Plan your dream Indian wedding stress-free. ShaadiMe offers end-to-end wedding planning with curated vendors across Hyderabad, Bengaluru, and Chennai.',
+      url: '/',
+      jsonLd: [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'WebSite',
+          name: 'ShaadiMe',
+          url: 'https://shaadi.me',
+          description: 'Premium end-to-end wedding planning platform in India.',
+          potentialAction: {
+            '@type': 'SearchAction',
+            target: 'https://shaadi.me/?q={search_term_string}',
+            'query-input': 'required name=search_term_string'
+          }
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'LocalBusiness',
+          name: 'ShaadiMe',
+          description: 'End-to-end wedding planning platform serving Hyderabad, Bengaluru, and Chennai.',
+          url: 'https://shaadi.me',
+          telephone: '+911234567890',
+          email: 'info@shaadi.me',
+          image: 'https://shaadi.me/ShaadiMe_Logo.png',
+          areaServed: [
+            { '@type': 'City', name: 'Hyderabad' },
+            { '@type': 'City', name: 'Bengaluru' },
+            { '@type': 'City', name: 'Chennai' }
+          ],
+          priceRange: '₹₹₹'
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: this.faqs.map(faq => ({
+            '@type': 'Question',
+            name: faq.q,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: faq.a
+            }
+          }))
+        }
+      ]
+    });
+  }
 
   goToPlan(): void {
     this.router.navigate(['/plan']);

@@ -4,12 +4,12 @@
   <div class="nav-shell">
     <div class="nav-inner">
       <a routerLink="/" class="nav-logo-wrap" (click)="closeMenu()">
-        <img src="ShaadiMe_Logo.png" alt="ShaadiMe" class="nav-logo" />
+        <img src="ShaadiMe_Logo.png" alt="ShaadiMe" class="nav-logo" width="1600" height="318" />
       </a>
 
-      <div class="nav-links" aria-label="Primary">
-        <a *ngFor="let item of navItems" routerLink="/" [fragment]="item.fragment" (click)="closeMenu()">{{ item.label }}</a>
-      </div>
+      <ul class="nav-links" role="list" aria-label="Main navigation">
+        <li *ngFor="let item of navItems"><a routerLink="/" [fragment]="item.fragment" (click)="closeMenu()">{{ item.label }}</a></li>
+      </ul>
 
       <div class="nav-right">
         <button
