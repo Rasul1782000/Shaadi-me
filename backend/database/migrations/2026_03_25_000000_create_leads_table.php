@@ -10,8 +10,8 @@ return new class extends Migration
     {
         Schema::create('leads', function (Blueprint $table) {
             $table->id();
-            $table->string('p1name')->nullable();
-            $table->string('p2name')->nullable();
+            $table->string('bride_name')->nullable();
+            $table->string('groom_name')->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->string('community')->nullable();

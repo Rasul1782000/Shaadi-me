@@ -15,11 +15,11 @@ class LeadApiTest extends TestCase
             'brideName' => 'Aisha',
             'groomName' => 'Rahul',
             'phone' => '9999999999',
-            'date' => '2026-12-10',
-            'budget' => '15 to 30 Lakh',
-            'type' => 'Love Marriage',
+            'weddingDate' => '2026-12-10',
+            'budget' => 2500000,
+            'venueType' => 'Love Marriage',
             'guests' => '300 to 600',
-            'preference' => 'I want to share my vision and let ShaadiMe handle the rest',
+            'notes' => 'I want to share my vision and let ShaadiMe handle the rest',
             'city' => 'Bengaluru',
         ]);
 

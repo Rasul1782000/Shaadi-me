@@ -10,8 +10,8 @@ class Lead extends Model
     use HasFactory;
 
     protected $fillable = [
-        'p1name',
-        'p2name',
+        'bride_name',
+        'groom_name',
         'email',
         'phone',
         'community',

@@ -12,8 +12,8 @@ class LeadController extends Controller
     public function store(Request $request): JsonResponse
     {
         $validated = $request->validate([
-            'p1name' => ['nullable', 'string', 'max:255'],
-            'p2name' => ['nullable', 'string', 'max:255'],
+            'brideName' => ['nullable', 'string', 'max:255'],
+            'groomName' => ['nullable', 'string', 'max:255'],
             'email' => ['nullable', 'email', 'max:255'],
             'phone' => ['nullable', 'string', 'max:50'],
             'community' => ['nullable', 'string', 'max:255'],
@@ -30,8 +30,8 @@ class LeadController extends Controller
         ]);
 
         $lead = Lead::create([
-            'p1name' => $validated['p1name'] ?? null,
-            'p2name' => $validated['p2name'] ?? null,
+            'bride_name' => $validated['brideName'] ?? null,
+            'groom_name' => $validated['groomName'] ?? null,
             'email' => $validated['email'] ?? null,
             'phone' => $validated['phone'] ?? null,
             'community' => $validated['community'] ?? null,
