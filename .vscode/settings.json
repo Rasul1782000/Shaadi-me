@@ -1,0 +1,13 @@
+{
+  "json.schemaDownload.enable": false,
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/.angular/**": true,
+    "**/dist/**": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.angular": true,
+    "**/dist": true
+  }
+}

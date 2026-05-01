@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "primeicons/primeicons.css";
 
 :root {
   --font-josefin: "Josefin Sans";
@@ -285,49 +284,6 @@ p-toolbar {
   margin: 1.15rem 0 0;
   color: var(--text-muted);
   font-size: 1.08rem;
-}
-
-.landing-card.p-card {
-  border: 1px solid rgba(201, 169, 110, 0.14);
-  border-radius: var(--landing-radius);
-  background: rgba(255, 255, 255, 0.84);
-  backdrop-filter: blur(16px);
-  box-shadow: var(--landing-shadow);
-  overflow: hidden;
-}
-
-.landing-card .p-card-body {
-  padding: 1.6rem;
-}
-
-.landing-card .p-card-title {
-  color: #b01f68;
-  text-transform: uppercase;
-  letter-spacing: 0.28em;
-  font-size: 0.78rem;
-  margin-bottom: 0.65rem;
-}
-
-.landing-card .p-card-content {
-  padding: 0;
-}
-
-.landing-card-dark.p-card {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.12);
-  box-shadow: none;
-}
-
-.landing-card-dark .p-card-body,
-.landing-card-dark .p-card-content {
-  color: var(--white);
-}
-
-.landing-card.city-card .p-card-body,
-.landing-card.theme-card .p-card-body,
-.landing-card.decor-card .p-card-body,
-.landing-card.venue-card .p-card-body {
-  padding: 1.2rem;
 }
 
 .landing-tag.p-tag {

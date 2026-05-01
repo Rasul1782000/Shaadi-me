@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
 
 import { AppComponent } from './app';
@@ -65,10 +64,9 @@ import { WhyShaadiMeComponent } from './components/landing-page/why-shaadime/why
     HttpClientModule,
     CommonModule,
     FormsModule,
-    CardModule,
     DividerModule
   ],
   providers: [],
-  bootstrap: [AppComponent] // Trigger rebuild
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
