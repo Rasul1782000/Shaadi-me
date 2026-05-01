@@ -137,6 +137,8 @@ const COMMUNITY_EVENTS: Record<string, CeremonyEvent[]> = {
 // ─────────────────────────────────────────────
 
 const TOTAL_STEPS = 5;
+const STYLE_GUIDANCE_OPTION = 'Still exploring - guide us';
+const SERVICE_GUIDANCE_OPTION = 'Need consultant guidance';
 
 const COMMUNITIES = [
   'Telugu', 'Tamil', 'Kannada', 'Malayali', 'Marathi',
@@ -149,6 +151,7 @@ const PLANNING_CITIES = ['Chennai', 'Bengaluru', 'Hyderabad'];
 const GUEST_OPTIONS = [
   'Under 50 (intimate)', '50 – 150', '150 – 300',
   '300 – 500', '500 – 1000', '1000+ (grand celebration)',
+  'Still estimating',
 ];
 
 const VENUE_OPTIONS = [
@@ -186,12 +189,17 @@ const STYLE_OPTIONS = [
     name: 'Destination',
     image: 'https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=600',
   },
+  {
+    name: STYLE_GUIDANCE_OPTION,
+    image: 'https://images.pexels.com/photos/18322084/pexels-photo-18322084.jpeg?auto=compress&cs=tinysrgb&w=600',
+  },
 ];
 
 const SERVICE_OPTIONS = [
   'Venue', 'Photography', 'Videography', 'Decoration & Florals',
   'Catering', 'Bridal Makeup', 'Mehendi', 'Music & DJ',
   'Wedding Invitations', 'Bridal Wear', 'Guest Management', 'Wedding Favours',
+  SERVICE_GUIDANCE_OPTION,
 ];
 
 const REFERRAL_OPTIONS = [
@@ -303,6 +311,14 @@ export class IntakeFormComponent {
     return ((this.form.budget - 1) / (200 - 1)) * 100;
   }
 
+  private get selectedStyles(): string[] {
+    return this.form.styles.size ? [...this.form.styles] : [STYLE_GUIDANCE_OPTION];
+  }
+
+  private get selectedServices(): string[] {
+    return this.form.services.size ? [...this.form.services] : [SERVICE_GUIDANCE_OPTION];
+  }
+
   get reviewRows(): { label: string; value: string }[] {
     const dateStr = this.form.weddingDate
       ? new Date(this.form.weddingDate).toLocaleDateString('en-IN', {
@@ -323,8 +339,8 @@ export class IntakeFormComponent {
       { label: 'Guests', value: this.form.guests || '—' },
       { label: 'Budget', value: formatBudget(this.form.budget) },
       { label: 'Events', value: includedEvents || '—' },
-      { label: 'Styles', value: this.form.styles.size ? [...this.form.styles].join(', ') : '—' },
-      { label: 'Priorities', value: this.form.services.size ? [...this.form.services].join(', ') : '—' },
+      { label: 'Styles', value: this.selectedStyles.join(', ') },
+      { label: 'Priorities', value: this.selectedServices.join(', ') },
     ];
   }
 
@@ -380,17 +396,8 @@ export class IntakeFormComponent {
         break;
 
       case 1:
-        if (!this.form.weddingDate) this.stepErrors['weddingDate'] = 'Please pick a wedding date';
         if (!this.form.guests) this.stepErrors['guests'] = 'Please select a guest count';
         if (!this.form.venueType) this.stepErrors['venueType'] = 'Please choose a venue preference';
-        break;
-
-      case 2:
-        if (this.form.styles.size === 0) this.stepErrors['styles'] = 'Please select at least one style';
-        break;
-
-      case 3:
-        if (this.form.services.size === 0) this.stepErrors['services'] = 'Please select at least one priority';
         break;
     }
 
@@ -400,9 +407,7 @@ export class IntakeFormComponent {
   private markAllFieldsTouchedForStep(step: number): void {
     const fieldsByStep: Record<number, string[]> = {
       0: ['p1name', 'p2name', 'email', 'phone', 'community', 'city'],
-      1: ['weddingDate', 'guests', 'venueType'],
-      2: ['styles'],
-      3: ['services'],
+      1: ['guests', 'venueType'],
     };
     (fieldsByStep[step] || []).forEach(f => this.touched.add(f));
   }
@@ -420,15 +425,8 @@ export class IntakeFormComponent {
         if (!this.form.city) errors['city'] = '1';
         break;
       case 1:
-        if (!this.form.weddingDate) errors['weddingDate'] = '1';
         if (!this.form.guests) errors['guests'] = '1';
         if (!this.form.venueType) errors['venueType'] = '1';
-        break;
-      case 2:
-        if (this.form.styles.size === 0) errors['styles'] = '1';
-        break;
-      case 3:
-        if (this.form.services.size === 0) errors['services'] = '1';
         break;
     }
     return Object.keys(errors).length === 0;
@@ -517,8 +515,8 @@ export class IntakeFormComponent {
       guests: this.form.guests,
       venueType: this.form.venueType,
       budget: this.form.budget,
-      styles: [...this.form.styles],
-      services: [...this.form.services],
+      styles: this.selectedStyles,
+      services: this.selectedServices,
       events: this.form.events
         .filter(e => e.included)
         .map(({ type, name, daysBefore }) => ({ type, name, daysBefore })),

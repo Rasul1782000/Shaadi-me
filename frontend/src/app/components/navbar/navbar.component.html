@@ -1,6 +1,4 @@
-<nav
-  class="site-nav"
->
+<nav class="site-nav">
   <div class="nav-shell">
     <div class="nav-inner">
       <a routerLink="/" class="nav-logo-wrap" (click)="closeMenu()">
@@ -8,11 +6,14 @@
       </a>
 
       <ul class="nav-links" role="list" aria-label="Main navigation">
-        <li *ngFor="let item of navItems"><a routerLink="/" [fragment]="item.fragment" (click)="closeMenu()">{{ item.label }}</a></li>
+        <li *ngFor="let item of navItems">
+          <a routerLink="/" [fragment]="item.fragment" (click)="closeMenu()">{{ item.label }}</a>
+        </li>
       </ul>
 
       <div class="nav-right">
         <button
+          *ngIf="!isContactPage"
           type="button"
           class="btn-primary cta-primary nav-cta"
           routerLink="/plan"
@@ -36,8 +37,15 @@
   </div>
 
   <div *ngIf="isMenuOpen" class="mobile-menu">
-    <a *ngFor="let item of navItems" routerLink="/" [fragment]="item.fragment" (click)="closeMenu()">{{ item.label }}</a>
+    <a
+      *ngFor="let item of navItems"
+      routerLink="/"
+      [fragment]="item.fragment"
+      (click)="closeMenu()"
+      >{{ item.label }}</a
+    >
     <button
+      *ngIf="!isContactPage"
       type="button"
       class="btn-primary cta-primary landing-btn-mobile"
       routerLink="/plan"

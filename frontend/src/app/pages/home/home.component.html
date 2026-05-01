@@ -8,5 +8,18 @@
   <app-decor class="landing-section-cream" [styles]="decorStyles"></app-decor>
   <app-themes class="landing-section-alt" [themes]="themes"></app-themes>
   <app-venues class="landing-section-soft" [venues]="venues"></app-venues>
+  <section class="home-contact-cta" aria-labelledby="home-contact-title">
+    <div class="home-contact-cta__lead" aria-hidden="true">
+      <span></span>
+    </div>
+    <div class="home-contact-cta__inner">
+      <div>
+        <p class="home-contact-cta__eyebrow">Need a conversation first?</p>
+        <h2 id="home-contact-title">Talk to a ShaadiMe planner</h2>
+        <p>Share your questions, venue doubts, or planning stage and we will help you choose the right next step.</p>
+      </div>
+      <a routerLink="/contact" class="home-contact-cta__link">Contact Us</a>
+    </div>
+  </section>
   <app-faq class="landing-section-muted" [items]="faqs" (startPlanning)="goToPlan()"></app-faq>
 </main>

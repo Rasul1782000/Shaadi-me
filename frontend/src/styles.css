@@ -1,10 +1,10 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
-  --font-josefin: "Josefin Sans";
-  --font-cormorant: "Josefin Sans";
-  --font-lora: "Josefin Sans";
-  --font-montserrat: "Josefin Sans";
+  --font-josefin: 'Josefin Sans';
+  --font-cormorant: 'Josefin Sans';
+  --font-lora: 'Josefin Sans';
+  --font-montserrat: 'Josefin Sans';
   --purple: #4b1248;
   --purple-mid: #6b1a67;
   --purple-dark: #300b2e;
@@ -56,7 +56,7 @@ body {
     radial-gradient(circle at top right, rgba(75, 18, 72, 0.08), transparent 26%),
     linear-gradient(180deg, #fffefd 0%, #fdf7f8 100%);
   color: var(--foreground);
-  font-family: var(--font-josefin), "Josefin Sans", "Segoe UI", sans-serif;
+  font-family: var(--font-josefin), 'Josefin Sans', 'Segoe UI', sans-serif;
   font-size: 1.02rem;
   line-height: 1.72;
   text-rendering: optimizeLegibility;
@@ -327,7 +327,9 @@ p-toolbar {
   border-radius: 999px;
   padding: 1rem 1.5rem;
   font-weight: 600;
-  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
 }
 
 .landing-btn-primary.p-button .p-button {
@@ -434,11 +436,21 @@ p-toolbar {
   animation: revealUp 0.7s var(--ease-out) forwards;
 }
 
-.reveal-d1.is-visible { animation-delay: 0ms; }
-.reveal-d2.is-visible { animation-delay: 80ms; }
-.reveal-d3.is-visible { animation-delay: 160ms; }
-.reveal-d4.is-visible { animation-delay: 240ms; }
-.reveal-d5.is-visible { animation-delay: 320ms; }
+.reveal-d1.is-visible {
+  animation-delay: 0ms;
+}
+.reveal-d2.is-visible {
+  animation-delay: 80ms;
+}
+.reveal-d3.is-visible {
+  animation-delay: 160ms;
+}
+.reveal-d4.is-visible {
+  animation-delay: 240ms;
+}
+.reveal-d5.is-visible {
+  animation-delay: 320ms;
+}
 
 @media (prefers-reduced-motion: reduce) {
   .reveal {
