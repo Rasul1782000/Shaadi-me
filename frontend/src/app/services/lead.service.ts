@@ -7,11 +7,11 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class LeadService {
-  private apiUrl = `${environment.apiUrl}/api/leads`;
+  private NG_APP_API_URL = `${environment.NG_APP_API_URL}/api/leads`;
 
   constructor(private http: HttpClient) {}
 
   submitLead(data: any): Observable<any> {
-    return this.http.post(this.apiUrl, data);
+    return this.http.post(this.NG_APP_API_URL, data);
   }
 }

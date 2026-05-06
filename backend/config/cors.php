@@ -17,6 +17,7 @@ return [
     'allowed_methods' => ['*'],
 
     'allowed_origins' => [
+        env('FRONTEND_URL', 'https://shaadi-me.vercel.app'),
         'https://yourdomain.com',
         'https://www.yourdomain.com',
         'http://localhost:4200', // Angular dev server

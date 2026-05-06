@@ -1,5 +1,6 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 
 // ─────────────────────────────────────────────
@@ -505,8 +506,8 @@ export class IntakeFormComponent {
 
   async submitForm(): Promise<void> {
     const payload = {
-      p1name: this.form.p1name,
-      p2name: this.form.p2name,
+      brideName: this.form.p1name,
+      groomName: this.form.p2name,
       email: this.form.email,
       phone: this.form.phone,
       community: this.form.community,
@@ -530,7 +531,7 @@ export class IntakeFormComponent {
     this.cdr.detectChanges();
 
     try {
-      const res = await fetch('/api/leads', {
+      const res = await fetch(`${environment.NG_APP_API_URL}/api/leads`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(payload),
