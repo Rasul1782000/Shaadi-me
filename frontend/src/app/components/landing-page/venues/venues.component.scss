@@ -277,19 +277,33 @@
   }
 
   .venues-shell {
-    padding: 12px;
+    padding: 12px 0 14px 12px;
     border-radius: 1.35rem;
+    overflow: hidden;
   }
 
   .venues-grid {
-    grid-template-columns: 1fr;
+    display: flex;
     gap: 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0 12px 6px 0;
+    scroll-padding-left: 0;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .venues-grid::-webkit-scrollbar {
+    display: none;
   }
 
   .venue-card {
     grid-column: auto !important;
+    flex: 0 0 min(82vw, 320px);
     min-height: 300px;
     border-radius: 16px;
+    scroll-snap-align: start;
   }
 
   .venue-name {

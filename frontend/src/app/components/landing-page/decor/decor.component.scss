@@ -248,22 +248,38 @@
   }
 
   .decor-shell {
-    padding: 12px;
+    padding: 12px 0 14px 12px;
     border-radius: 1.35rem;
+    overflow: hidden;
   }
 
   .decor-bento {
-    grid-template-columns: 1fr 1fr;
-    grid-auto-rows: 180px;
-    gap: 10px;
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0 12px 6px 0;
+    scroll-padding-left: 0;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .decor-bento::-webkit-scrollbar {
+    display: none;
   }
 
   .decor-card[data-card="0"] {
-    grid-column: span 2;
+    grid-column: auto;
+    grid-row: auto;
   }
 
   .decor-card {
+    flex: 0 0 min(82vw, 320px);
+    min-height: 260px;
+    aspect-ratio: 1.12;
     border-radius: 14px;
+    scroll-snap-align: start;
   }
 
   .decor-overlay-name {

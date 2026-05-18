@@ -304,14 +304,33 @@
     line-height: 1.65;
   }
 
+  .cities-frame {
+    padding: 12px 0 14px 12px;
+    border-radius: 1.35rem;
+    overflow: hidden;
+  }
+
   .cities-grid {
-    grid-template-columns: 1fr;
+    display: flex;
     gap: 14px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0 12px 6px 0;
+    scroll-padding-left: 0;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .cities-grid::-webkit-scrollbar {
+    display: none;
   }
 
   .city-card {
+    flex: 0 0 min(82vw, 320px);
     min-height: 240px;
     aspect-ratio: 1.25;
+    scroll-snap-align: start;
   }
 
   .city-card:last-child {

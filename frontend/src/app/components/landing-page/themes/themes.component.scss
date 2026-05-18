@@ -389,20 +389,34 @@
   }
 
   .themes-shell {
-    padding: 12px;
+    padding: 12px 0 14px 12px;
     border-radius: 1.35rem;
+    overflow: hidden;
   }
 
   .themes-grid {
-    grid-template-columns: 1fr;
+    display: flex;
     gap: 14px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0 12px 6px 0;
+    scroll-padding-left: 0;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .themes-grid::-webkit-scrollbar {
+    display: none;
   }
 
   .theme-card,
   .theme-card.is-featured {
     grid-column: auto !important;
+    flex: 0 0 min(82vw, 320px);
     min-height: 260px;
     aspect-ratio: 1.18;
+    scroll-snap-align: start;
   }
 
   .is-featured .theme-name,

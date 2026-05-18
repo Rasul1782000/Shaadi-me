@@ -62,3 +62,30 @@ The backend is now a real Laravel application using SQLite for local development
 
 - `POST /api/leads`
 - `GET /api/venues`
+
+## Load Testing With k6
+
+The repository includes a k6 script at `load-tests/k6/shaadime-load.js`.
+
+Start the app locally first:
+
+```bash
+./run-dev.sh
+```
+
+Then run the 100-user load test with Docker:
+
+```bash
+docker run --rm --network host -v "$PWD:/work" -w /work grafana/k6 run load-tests/k6/shaadime-load.js
+```
+
+By default the script targets:
+
+- Frontend: `http://127.0.0.1:3000`
+- API: `http://127.0.0.1:3000` for proxied local requests
+
+You can override targets for another environment:
+
+```bash
+docker run --rm --network host -e FRONTEND_BASE_URL=https://your-frontend.example.com -e API_BASE_URL=https://your-api.example.com -v "$PWD:/work" -w /work grafana/k6 run load-tests/k6/shaadime-load.js
+```
