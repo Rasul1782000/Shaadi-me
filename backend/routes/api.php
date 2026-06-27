@@ -1,10 +1,14 @@
 <?php
 
-use App\Http\Controllers\Api\LeadController;
-use App\Http\Controllers\Api\VenueController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/leads', [LeadController::class, 'store'])
-     ->middleware('throttle:lead-submit');
-Route::get('/leads', [LeadController::class, 'index']);
-Route::get('/venues', [VenueController::class, 'index']);
+// Module Routes
+require base_path('app/Modules/Contact/Routes/api.php');
+require base_path('app/Modules/Lead/Routes/api.php');
+require base_path('app/Modules/Venue/Routes/api.php');
+
+// Auth Routes
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});

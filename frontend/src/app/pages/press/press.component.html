@@ -10,10 +10,9 @@
       {title: 'Destination Wedding Trends', source: 'Harper\'s Bazaar', date: 'Dec 2023', img: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800'},
       {title: 'Planning a Royal Wedding', source: 'Elle Decor', date: 'Nov 2023', img: 'https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&q=80&w=800'}
     ]" class="group cursor-pointer">
-      <div class="relative h-64 rounded-3xl overflow-hidden mb-6">
-        <img [src]="article.img" [alt]="article.title" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700">
-        <div class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-all"></div>
-      </div>
+<div class="relative h-64 rounded-3xl overflow-hidden mb-6">
+         <img [src]="article.img" [alt]="article.title" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700" referrerPolicy="no-referrer">
+       </div>
       <div class="text-sm text-[#ff5757] font-medium mb-2">{{article.source}} | {{article.date}}</div>
       <h3 class="text-2xl font-serif mb-2">{{article.title}}</h3>
       <a href="#" class="inline-block mt-4 text-gray-500 font-medium border-b border-gray-300 hover:border-[#ff5757] transition-all">Read Article</a>

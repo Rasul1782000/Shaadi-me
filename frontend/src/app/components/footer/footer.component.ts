@@ -3,7 +3,8 @@ import { PlannerUiService } from '../../services/planner-ui.service';
 
 @Component({
   selector: 'app-footer',
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule, DividerModule],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss'
 })

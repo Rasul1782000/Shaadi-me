@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Modules\Lead\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Venue extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'description',
+        'city',
+        'type',
+        'capacity',
+        'image',
+    ];
+}

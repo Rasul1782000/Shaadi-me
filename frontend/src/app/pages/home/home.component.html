@@ -10,6 +10,5 @@
   <app-venues class="landing-section-soft" [venues]="venues"></app-venues>
   <app-faq class="landing-section-muted" [items]="faqs" (startPlanning)="goToPlan()"></app-faq>
 
-  <!-- Intake Form Modal -->
-  <app-intake-form *ngIf="showForm" (close)="showForm = false"></app-intake-form>
+  <app-intake-form *ngIf="plannerUi.isOpen()" (close)="plannerUi.close()"></app-intake-form>
 </main>
