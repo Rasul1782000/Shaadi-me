@@ -283,9 +283,25 @@
     </div>
   </div>
 
+  <!-- Error banner -->
+  <div *ngIf="errorMessage" class="pf-error-banner">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+    </svg>
+    <span>{{ errorMessage }}</span>
+    <button class="pf-error-dismiss" (click)="errorMessage = null" type="button">&times;</button>
+  </div>
+
+  <!-- Step validation errors -->
+  <div *ngIf="stepErrors.length > 0" class="pf-step-errors">
+    <ul>
+      <li *ngFor="let err of stepErrors">{{ err }}</li>
+    </ul>
+  </div>
+
   <!-- Footer -->
   <div class="pf-footer">
-    <button *ngIf="step > 0" class="pf-back-btn" (click)="prevStep()" type="button">
+    <button *ngIf="step > 0" class="pf-back-btn" (click)="prevStep()" type="button" [disabled]="isSubmitting">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
       Back
     </button>
@@ -293,9 +309,10 @@
 
     <span class="pf-step-counter">{{ step + 1 }} / {{ TOTAL_STEPS }}</span>
 
-    <button class="pf-next-btn" (click)="nextStep()" type="button">
-      {{ step === TOTAL_STEPS - 1 ? 'Submit' : 'Continue' }}
-      <svg *ngIf="step < TOTAL_STEPS - 1" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    <button class="pf-next-btn" (click)="nextStep()" type="button" [disabled]="isSubmitting">
+      <span *ngIf="isSubmitting" class="pf-spinner"></span>
+      {{ isSubmitting ? 'Submitting...' : (step === TOTAL_STEPS - 1 ? 'Submit' : 'Continue') }}
+      <svg *ngIf="!isSubmitting && step < TOTAL_STEPS - 1" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
     </button>
   </div>
 </div>

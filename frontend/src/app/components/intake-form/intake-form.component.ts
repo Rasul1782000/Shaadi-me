@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { LeadService, LeadPayload } from '../../services/lead.service';
 
 // ─────────────────────────────────────────────
 // Types
@@ -210,9 +212,9 @@ const STEP_LABELS = [
 // ─────────────────────────────────────────────
 
 function formatBudget(v: number): string {
-  if (v < 100) return `₹${v} Lakhs`;
-  if (v >= 200) return '₹2 Crore+';
-  return `₹${(v / 100).toFixed(1)} Crore`;
+  if (v < 100) return `\u20B9${v} Lakhs`;
+  if (v >= 200) return '\u20B92 Crore+';
+  return `\u20B9${(v / 100).toFixed(1)} Crore`;
 }
 
 function timingLabel(daysBefore: number): string {
@@ -238,7 +240,6 @@ function timingLabel(daysBefore: number): string {
   styleUrl: './intake-form.component.scss'
 })
 export class IntakeFormComponent {
-  // Expose to template
   readonly TOTAL_STEPS = TOTAL_STEPS;
   readonly communities = COMMUNITIES;
   readonly planningCities = PLANNING_CITIES;
@@ -251,6 +252,9 @@ export class IntakeFormComponent {
 
   step = 0;
   submitted = false;
+  isSubmitting = false;
+  errorMessage: string | null = null;
+  stepErrors: string[] = [];
 
   form: FormState = {
     p1name: '',
@@ -269,6 +273,11 @@ export class IntakeFormComponent {
     notes: '',
     referral: '',
   };
+
+  constructor(
+    private leadService: LeadService,
+    @Inject(DOCUMENT) private doc: Document,
+  ) {}
 
   get minDate(): string {
     return new Date().toISOString().split('T')[0];
@@ -295,7 +304,7 @@ export class IntakeFormComponent {
       ? new Date(this.form.weddingDate).toLocaleDateString('en-IN', {
           day: 'numeric', month: 'long', year: 'numeric',
         })
-      : '—';
+      : '\u2014';
 
     const includedEvents = this.form.events
       .filter(e => e.included)
@@ -303,15 +312,15 @@ export class IntakeFormComponent {
       .join(', ');
 
     return [
-      { label: 'The couple', value: `${this.form.p1name || '—'} & ${this.form.p2name || '—'}` },
-      { label: 'City', value: this.form.city || '—' },
-      { label: 'Wedding tradition', value: this.form.community || '—' },
+      { label: 'The couple', value: `${this.form.p1name || '\u2014'} & ${this.form.p2name || '\u2014'}` },
+      { label: 'City', value: this.form.city || '\u2014' },
+      { label: 'Wedding tradition', value: this.form.community || '\u2014' },
       { label: 'Wedding date', value: dateStr },
-      { label: 'Guests', value: this.form.guests || '—' },
+      { label: 'Guests', value: this.form.guests || '\u2014' },
       { label: 'Budget', value: formatBudget(this.form.budget) },
-      { label: 'Events', value: includedEvents || '—' },
-      { label: 'Styles', value: this.form.styles.size ? [...this.form.styles].join(', ') : '—' },
-      { label: 'Priorities', value: this.form.services.size ? [...this.form.services].join(', ') : '—' },
+      { label: 'Events', value: includedEvents || '\u2014' },
+      { label: 'Styles', value: this.form.styles.size ? [...this.form.styles].join(', ') : '\u2014' },
+      { label: 'Priorities', value: this.form.services.size ? [...this.form.services].join(', ') : '\u2014' },
     ];
   }
 
@@ -321,6 +330,33 @@ export class IntakeFormComponent {
           day: 'numeric', month: 'long', year: 'numeric',
         })
       : 'TBD';
+  }
+
+  // ─── Validation ──────────────────────────
+
+  validateCurrentStep(): boolean {
+    this.stepErrors = [];
+
+    if (this.step === 0) {
+      if (!this.form.p1name.trim()) {
+        this.stepErrors.push('Bride name is required');
+      }
+      if (!this.form.p2name.trim()) {
+        this.stepErrors.push('Groom name is required');
+      }
+      if (!this.form.email.trim()) {
+        this.stepErrors.push('Email is required');
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.form.email)) {
+        this.stepErrors.push('Please enter a valid email address');
+      }
+      if (!this.form.phone.trim()) {
+        this.stepErrors.push('Phone number is required');
+      } else if (!/^[\+]?[0-9\s\-\(\)]{7,20}$/.test(this.form.phone)) {
+        this.stepErrors.push('Please enter a valid phone number');
+      }
+    }
+
+    return this.stepErrors.length === 0;
   }
 
   // ─── Event handlers ────────────────────────
@@ -336,6 +372,8 @@ export class IntakeFormComponent {
   }
 
   nextStep(): void {
+    if (!this.validateCurrentStep()) return;
+
     if (this.step < TOTAL_STEPS - 1) {
       this.goToStep(this.step + 1);
     } else {
@@ -392,27 +430,44 @@ export class IntakeFormComponent {
   }
 
   submitForm(): void {
-    const payload = {
-      p1name: this.form.p1name,
-      p2name: this.form.p2name,
-      email: this.form.email,
-      phone: this.form.phone,
-      community: this.form.community,
-      city: this.form.city,
-      weddingDate: this.form.weddingDate,
-      guests: this.form.guests,
-      venueType: this.form.venueType,
+    this.isSubmitting = true;
+    this.errorMessage = null;
+
+    const payload: LeadPayload = {
+      bride_name: this.form.p1name.trim(),
+      groom_name: this.form.p2name.trim(),
+      email: this.form.email.trim(),
+      phone: this.form.phone.trim(),
+      community: this.form.community || undefined,
+      city: this.form.city || undefined,
+      wedding_date: this.form.weddingDate || undefined,
+      guests: this.form.guests || undefined,
+      venue_type: this.form.venueType || undefined,
       budget: this.form.budget,
-      styles: [...this.form.styles],
-      services: [...this.form.services],
-      events: this.form.events
-        .filter(e => e.included)
-        .map(({ type, name, daysBefore }) => ({ type, name, daysBefore })),
-      notes: this.form.notes,
-      referral: this.form.referral,
+      styles: this.form.styles.size ? [...this.form.styles] : undefined,
+      services: this.form.services.size ? [...this.form.services] : undefined,
+      events: this.form.events.filter(e => e.included).map(({ type, name, daysBefore }) => ({ type, name, daysBefore })),
+      notes: this.form.notes || undefined,
+      referral: this.form.referral || undefined,
     };
 
-    console.log('[ShaadiMe] Intake submission:', payload);
-    this.submitted = true;
+    this.leadService.submitLead(payload).subscribe({
+      next: () => {
+        this.isSubmitting = false;
+        this.submitted = true;
+        this.doc.defaultView?.scrollTo({ top: 0, behavior: 'smooth' });
+      },
+      error: (err) => {
+        this.isSubmitting = false;
+        if (err.status === 429) {
+          this.errorMessage = 'Too many submissions. Please try again in a minute.';
+        } else if (err.error?.errors) {
+          const firstError = Object.values(err.error.errors)[0];
+          this.errorMessage = Array.isArray(firstError) ? firstError[0] as string : 'Validation failed. Please check your inputs.';
+        } else {
+          this.errorMessage = err.error?.message || 'Something went wrong. Please try again.';
+        }
+      }
+    });
   }
 }

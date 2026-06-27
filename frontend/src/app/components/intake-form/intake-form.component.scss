@@ -1128,3 +1128,84 @@ select.pf-input option {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ── Error banner ──────────────────────────────────────── */
+.pf-error-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 42px;
+  padding: 12px 16px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  color: #991b1b;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.pf-error-banner svg {
+  flex-shrink: 0;
+  color: #dc2626;
+}
+
+.pf-error-dismiss {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: #991b1b;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+  opacity: 0.6;
+}
+
+.pf-error-dismiss:hover {
+  opacity: 1;
+}
+
+/* ── Step validation errors ────────────────────────────── */
+.pf-step-errors {
+  margin: 0 42px 8px;
+}
+
+.pf-step-errors ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pf-step-errors li {
+  padding: 6px 12px;
+  margin-bottom: 4px;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 8px;
+  color: #9a3412;
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+/* ── Spinner ───────────────────────────────────────────── */
+.pf-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: pf-spin 0.6s linear infinite;
+}
+
+@keyframes pf-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Disabled button states ────────────────────────────── */
+.pf-next-btn:disabled,
+.pf-back-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}

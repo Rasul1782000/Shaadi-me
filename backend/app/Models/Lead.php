@@ -12,12 +12,26 @@ class Lead extends Model
     protected $fillable = [
         'bride_name',
         'groom_name',
+        'email',
         'phone',
-        'wedding_date',
-        'budget',
-        'wedding_type',
-        'guest_count',
-        'planning_preference',
+        'community',
         'city',
+        'wedding_date',
+        'guests',
+        'venue_type',
+        'budget',
+        'styles',
+        'services',
+        'events',
+        'notes',
+        'referral',
+        'venue_preference',
+    ];
+
+    protected $casts = [
+        'styles' => 'array',
+        'services' => 'array',
+        'events' => 'array',
+        'budget' => 'integer',
     ];
 }
